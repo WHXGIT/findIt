@@ -18,14 +18,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class DemoServiceImpl {
 	@Autowired(required = false)
 	private DemoMapper mapper;
-
 	private static final Logger logger = LogManager.getLogger(DemoServiceImpl.class);
 	@Transactional(rollbackFor = Exception.class)
 	public void insert(){
 		int id = (int)(Math.random() * 100000);
 		DemoDO demoDO = new DemoDO(id, 23, "wanghaoxin");
 		logger.error("开始执行插入Demo的信息！");
-
 		mapper.insert(demoDO);
 	}
 
