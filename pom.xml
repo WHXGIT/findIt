@@ -131,6 +131,11 @@
 			<version>${mybatis.spring.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-typehandlers-jsr310</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 		<!-- database connection pool -->
 		<dependency>
 			<groupId>com.alibaba</groupId>

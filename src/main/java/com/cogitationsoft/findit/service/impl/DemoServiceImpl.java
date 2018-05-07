@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 /**
  * @author: Andy
  * @date: 5/4/2018 9:50 AM
@@ -16,13 +18,15 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class DemoServiceImpl {
+
 	@Autowired(required = false)
 	private DemoMapper mapper;
 	private static final Logger logger = LogManager.getLogger(DemoServiceImpl.class);
 	@Transactional(rollbackFor = Exception.class)
 	public void insert(){
+
 		int id = (int)(Math.random() * 100000);
-		DemoDO demoDO = new DemoDO(id, 23, "wanghaoxin");
+		DemoDO demoDO = new DemoDO(id, 23, "wanghaoxin", LocalDateTime.now());
 		logger.error("开始执行插入Demo的信息！");
 		mapper.insert(demoDO);
 	}
