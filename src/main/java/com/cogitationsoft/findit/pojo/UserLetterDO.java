@@ -1,5 +1,7 @@
 package com.cogitationsoft.findit.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 import java.util.Objects;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Objects;
  * @description: 用户信件数据对象
  * @version: 1.0
  */
+@Alias(value = "UserLetterDO")
 public class UserLetterDO {
 	private String id;
 	private String letterId;

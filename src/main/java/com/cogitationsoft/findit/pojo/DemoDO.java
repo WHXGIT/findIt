@@ -1,5 +1,7 @@
 package com.cogitationsoft.findit.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 import java.time.LocalDateTime;
 
 /**
@@ -8,6 +10,7 @@ import java.time.LocalDateTime;
  * @description: 样例
  * @version: 1.0
  */
+@Alias(value = "DemoDO")
 public class DemoDO {
 	private int id;
 	private int no;

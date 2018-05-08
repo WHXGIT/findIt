@@ -1,5 +1,7 @@
 package com.cogitationsoft.findit.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -9,6 +11,7 @@ import java.util.Objects;
  * @description: 评论实体
  * @version: 1.0
  */
+@Alias(value="CommentDO")
 public class CommentDO {
 	private String commentId;
 	private String conmmentName;

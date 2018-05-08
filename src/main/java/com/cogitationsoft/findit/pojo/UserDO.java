@@ -1,5 +1,7 @@
 package com.cogitationsoft.findit.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -10,6 +12,7 @@ import java.util.Objects;
  * @description: 用户实体
  * @version: 1.0
  */
+@Alias(value = "UserDO")
 public class UserDO{
 	private String userId;
 	private String username;

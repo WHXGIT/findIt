@@ -1,5 +1,7 @@
 package com.cogitationsoft.findit.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -9,6 +11,7 @@ import java.util.Objects;
  * @description: Credential Data Object
  * @version: 1.0
  */
+@Alias(value = "CredentialDO")
 public class CredentialDO {
 	private String credId;
 	private String credNo;
