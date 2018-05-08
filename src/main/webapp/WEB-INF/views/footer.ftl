@@ -1,0 +1,1 @@
+<div class ="footer"> Copyright All rights reserved. 版权所有</div>

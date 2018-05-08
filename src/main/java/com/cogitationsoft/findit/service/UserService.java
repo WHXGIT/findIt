@@ -1,6 +1,7 @@
 package com.cogitationsoft.findit.service;
 
 import com.cogitationsoft.findit.pojo.UserDO;
+import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @description: 用户操作
  * @version: 1.0
  */
+
 public interface UserService {
 
 	/** @description： Be used to insert a user*/
