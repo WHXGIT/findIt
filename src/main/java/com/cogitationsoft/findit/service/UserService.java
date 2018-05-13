@@ -1,6 +1,7 @@
 package com.cogitationsoft.findit.service;
 
 import com.cogitationsoft.findit.pojo.UserDO;
+import com.cogitationsoft.findit.pojo.UserVO;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -27,5 +28,9 @@ public interface UserService {
 	/** @description： Delete a user by id*/
 	void delete(String id);
 
-	UserDO login();
+	/** @description： Be used to search by condition*/
+	UserVO getUserVO(UserDO userDO);
+
+	/** @description： 修改头像地址*/
+	void updateHeadPath(String headImg);
 }

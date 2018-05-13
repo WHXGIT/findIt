@@ -1,5 +1,9 @@
 package com.cogitationsoft.findit.pojo;
 
+import com.cogitationsoft.findit.common.enums.AuthorityEnum;
+import com.cogitationsoft.findit.common.enums.SexEnum;
+import com.cogitationsoft.findit.common.enums.StateEnum;
+
 import java.time.LocalDateTime;
 
 /**
@@ -17,9 +21,9 @@ public class UserVO {
 	private String otherConnect;
 	private String headImg;
 	private LocalDateTime registerTime;
-	private String authority;
-	private String state;
-	private String sex;
+	private AuthorityEnum authority;
+	private StateEnum state;
+	private SexEnum sex;
 	private Integer age;
 
 	public UserVO(){}
@@ -88,27 +92,27 @@ public class UserVO {
 		this.registerTime = registerTime;
 	}
 
-	public String getAuthority() {
+	public AuthorityEnum getAuthority() {
 		return authority;
 	}
 
-	public void setAuthority(String authority) {
+	public void setAuthority(AuthorityEnum authority) {
 		this.authority = authority;
 	}
 
-	public String getState() {
+	public StateEnum getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(StateEnum state) {
 		this.state = state;
 	}
 
-	public String getSex() {
+	public SexEnum getSex() {
 		return sex;
 	}
 
-	public void setSex(String sex) {
+	public void setSex(SexEnum sex) {
 		this.sex = sex;
 	}
 
@@ -118,5 +122,23 @@ public class UserVO {
 
 	public void setAge(Integer age) {
 		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+		return "UserVO{" +
+				"userId='" + userId + '\'' +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", nickname='" + nickname + '\'' +
+				", phone='" + phone + '\'' +
+				", otherConnect='" + otherConnect + '\'' +
+				", headImg='" + headImg + '\'' +
+				", registerTime=" + registerTime +
+				", authority='" + authority + '\'' +
+				", state='" + state + '\'' +
+				", sex='" + sex + '\'' +
+				", age=" + age +
+				'}';
 	}
 }

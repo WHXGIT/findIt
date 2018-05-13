@@ -22,4 +22,13 @@ public enum SexEnum {
 	public void setValue(int value) {
 		this.value = value;
 	}
+
+	public static SexEnum getEnum(int value) {
+		for (SexEnum examType : SexEnum.values()) {
+			if (value == examType.getValue()) {
+				return examType;
+			}
+		}
+		return null;
+	}
 }

@@ -21,4 +21,13 @@ public enum StateEnum {
 	public void setValue(int value) {
 		this.value = value;
 	}
+
+	public static StateEnum getEnum(int value) {
+		for (StateEnum examType : StateEnum.values()) {
+			if (value == examType.getValue()) {
+				return examType;
+			}
+		}
+		return null;
+	}
 }

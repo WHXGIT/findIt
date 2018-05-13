@@ -1,0 +1,312 @@
+body {
+	background-color: #F0F2F5;
+}
+
+a:hover {
+	cursor: hand;
+	text-decoration-line: none;
+}
+
+.header {
+	width: 100%;
+	margin: auto;
+	background-color: #01C2AF;
+	height: 59px;
+}
+
+.header-nav {
+	color: black;
+	padding: 0;
+	height: 59px;
+	line-height: 59px;
+	background-color: #01C2AF;
+	font-size: 18px;
+	margin-top: 0px;
+	border: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.header-nav-but {
+	font-size: 16px !important;
+	height: 59px;
+	text-align: center;
+}
+
+.navbar-nav > li > a {
+	padding-top: 18px;
+}
+
+.logo {
+	font-size: 29px;
+	line-height: 59px;
+	float: right;
+}
+
+.logo-font {
+	font-family: -webkit-pictograph;
+	font-size: 29px;
+	line-height: 59px;
+	float: right;
+}
+
+.main {
+	width: 1100px;
+	margin: auto;
+}
+
+.main-all-card-group {
+	margin-top: 66px;
+}
+
+.main-all-card-style {
+	padding: 0;
+}
+
+.main-all-card {
+	padding: 0;
+	height: 168px;
+	background-color: #ffffff;
+}
+
+.main-all-card-content {
+	padding: 25px;
+}
+
+.main-activity-card {
+	margin-top: 20px;
+	height: 420px;
+	padding: 0;
+}
+
+.main-connectandquick-card {
+	padding: 0;
+	margin: 20px;
+	height: 400px;
+}
+
+.main-connect-card {
+	height: 200px;
+}
+
+.main-quick-card {
+	height: 200px;
+}
+
+.footer {
+	height: 40px;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	border-radius: 0;
+}
+
+.footer-well {
+	height:  40px;
+	line-height: 40px;
+	border-radius: 0;
+	margin: 0;
+	background-color: #01C2AF;
+}
+
+/************************************/
+.navbar-default {
+	background-color: #01C2AF !important;
+}
+
+.navbar-default .navbar-nav li a {
+	color: white !important;
+}
+
+.nav li:hover {
+	background-color: black;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #F0F2F5;
+}
+
+.container {
+	width: 500px;
+	margin: 50px auto;
+}
+
+#shuru {
+	width: 70%;
+
+}
+
+#huoqu {
+	width: 20%;
+	height: 34px;
+	line-height: 34px;
+	border-radius: 5px;
+	float: right;
+	border: 1px solid #cccccc;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	text-align: center;
+	cursor: pointer;
+
+}
+
+#yanzheng {
+	position: relative;
+}
+
+#registerBtn {
+	margin-left: 30px;
+	width: 176px;
+	height: 40px;
+	background: #01C2AF;
+	color: white;
+	text-align: center;
+	font-size: 18px;
+	border: 0;
+	border-radius: 4px;
+}
+
+.err1,
+.err2,
+.err3,
+.err4 {
+	display: none;
+}
+
+/********************************************/
+.login_and_reg {
+	font-size: 14px;
+	margin-left: 215px;
+	/* margin-top: -11px; */
+}
+
+.already_login {
+	color: #01C2AF;
+	padding-left: 109px;
+}
+
+.login-card {
+	width: 368px;
+	padding-top: 100px;
+	margin-left: 778px;
+}
+
+.login{
+	height: 100%;
+	background-image: url("../image/login.png");
+}
+
+.u-a-p-login {
+	color: #01C2AF;
+	padding: 17px 37px;
+	font-size: 17px;
+}
+.login-hr{
+	height: 2px;
+	background-color: #01C2AF;
+	margin-top: 0;
+	margin-bottom: 36px;
+}
+
+.login-button{
+	border: 0;
+	background-color: #01C2AF;
+	width: 100%;
+	height: 40px;
+	border-radius: 5px;
+}
+
+.my-center-container{
+	width: 1100px;
+	margin: auto;
+}
+
+.my-center-head-img{
+	width: 121px;
+	height: 121px;
+}
+
+.my-center-hr{
+height: 1px;
+background-color: #01C2AF;
+}
+
+.my-center-flow{
+	height: 176px;
+	width: 278px;
+	margin:  auto;
+}
+
+.my-center-flow-single1{
+	height: 100%;
+	border: 0;
+	border-style: solid;
+	border-bottom-width: 4px;
+	border-bottom-color: #108DE9;
+}
+
+
+.my-center-flow-single2{
+	height: 100%;
+	border: 0;
+	border-style: solid;
+	border-bottom-width: 4px;
+	border-bottom-color: #01C2AF;
+}
+.my-center-flow-single3{
+	height: 100%;
+	border: 0;
+	border-style: solid;
+	border-bottom-width: 4px;
+	border-bottom-color: #FE6600;
+}
+
+
+.my-center-flow-single4{
+	height: 100%;
+	border: 0;
+	border-style: solid;
+	border-bottom-width: 4px;
+	border-bottom-color: #A3D1AB;
+}
+.my-center-flow-single5{
+	height: 100%;
+	border: 0;
+	border-style: solid;
+	border-bottom-width: 4px;
+	border-bottom-color: #FF66CC;
+}
+
+
+.my-center-flow-single6{
+	height: 100%;
+	border: 0;
+	border-style: solid;
+	border-bottom-width: 4px;
+	border-bottom-color: #4BB4E4;
+}
+.my-center-flow-single7{
+	height: 100%;
+	border: 0;
+	border-style: solid;
+	border-bottom-width: 4px;
+	border-bottom-color: #CC3300;
+}
+
+
+.my-center-flow-single8{
+	height: 100%;
+	border: 0;
+	border-style: solid;
+	border-bottom-width: 4px;
+	border-bottom-color: #999999;
+}
+
+.my-center-input{
+	border: 0;
+	border-radius: 3px;
+	width: 110px;
+	padding: 5px;
+	background-color: #FFFEED;
+}

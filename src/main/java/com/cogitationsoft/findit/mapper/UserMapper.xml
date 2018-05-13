@@ -11,11 +11,9 @@
 	</resultMap>-->
 	<insert id="create" parameterType="UserDO" flushCache="true" statementType="PREPARED">
 		INSERT INTO t_user
-		( user_id, username, password, nickname, phone, other_connect, head_img,
-		register_time, authority, state, sex, age )
+		( user_id, username, password, nickname, phone )
 		VALUES
-		(UUID(),#{username},#{password},#{nickname},#{phone},#{otherConnect},
-		#{headImg},#{registerTime},#{authority},#{state},#{sex},#{age})
+		(UUID(),#{username},#{password},#{nickname},#{phone})
 	</insert>
 
 	<update  id="update" parameterType="UserDO" flushCache="true" statementType="PREPARED" timeout="20">
@@ -49,13 +47,28 @@
 	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
 		SELECT * FROM t_user
 		<where>
-			<if test="userId ">
-
+			<if test='userId != null and userId != ""'>
+				user_id = #{userId}
+			</if>
+			<if test='username != null and username != null'>
+				AND username = #{username}
+			</if>
+			<if test='password != null and password != ""'>
+				AND password = #{password}
 			</if>
 		</where>
+	</select>
+
+	<select id="readById" resultType="UserDO" parameterType="String" flushCache="false" useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT * FROM t_user WHERE id = #{userId}
 	</select>
 
 	<delete  id="delete" parameterType="String" flushCache="true" statementType="PREPARED" timeout="20">
 
 	</delete>
+
+	<update id="updateHeadPath" parameterType="String" flushCache="true" statementType="PREPARED" timeout="20">
+		UPDATE t_user SET head_img = #{headImg}
+	</update>
 </mapper>

@@ -14,10 +14,10 @@ import java.sql.SQLException;
 @Mapper
 public interface UserMapper {
 	/** @description： Be used to insert a user*/
-	void create(UserDO userDO) throws SQLException;
+	void create(UserDO userDO) throws Exception;
 
 	/** @description： Search a user by id*/
-	UserDO getUserDO(String id) throws SQLException;
+	UserDO readById(String id) throws SQLException;
 
 	/** @description： Update a user*/
 	void update(UserDO userDO) throws SQLException;
@@ -25,4 +25,12 @@ public interface UserMapper {
 	/** @description： Delete a user by id*/
 	void delete(String id) throws SQLException;
 
+	/** @description： 通过用户名查询用户*/
+	UserDO getUserDOByUsername(String username) throws SQLException;
+
+	/** @description： 通过条件查找*/
+	UserDO getUserDO(UserDO userDO) throws SQLException;
+
+	/** @description： 修改头像*/
+	void updateHeadPath(String headImg) throws SQLException;
 }

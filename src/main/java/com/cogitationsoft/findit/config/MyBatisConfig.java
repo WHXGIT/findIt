@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -67,8 +68,8 @@ public class MyBatisConfig {
 	public SqlSessionFactory sqlSessionFactory(ApplicationContext applicationContext) throws Exception {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		/*org.springframework.core.io.Resource resource = new ClassPathResource("config/mybatis-config.xml");
-		sessionFactory.setConfigLocation(resource);*/
+		org.springframework.core.io.Resource resource = new ClassPathResource("config/mybatis-config.xml");
+		sessionFactory.setConfigLocation(resource);
 		sessionFactory.setTypeAliasesPackage("com.cogitationsoft.findit.pojo");
 		return sessionFactory.getObject();
 	}

@@ -2,10 +2,14 @@ package com.cogitationsoft.findit.controller;
 
 import com.cogitationsoft.findit.service.impl.DemoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author: Andy
@@ -28,7 +32,49 @@ public class IndexController {
 	 * @date:       5/3/2018 3:57 PM
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(){
+	public String index(HttpServletRequest request, HttpServletResponse response){
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		return "index";
+	}
+
+	/**
+	 * Method Description:
+	 * 〈跳转到注册页面〉
+	 *
+	 * @param:      null
+	 * @return:
+	 * @author:     Andy
+	 * @date:       5/10/2018 10:36 AM
+	 */
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register(HttpServletResponse response){
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		return "user/register";
+	}
+
+	/**
+	 * Method Description:
+	 * 〈跳转到登录页面〉
+	 *
+	 * @param:      null
+	 * @return:
+	 * @author:     Andy
+	 * @date:       5/10/2018 11:04 AM
+	 */
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(HttpServletResponse response){
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		return "user/login";
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session, HttpServletResponse response){
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		session.removeAttribute("userVO");
 		return "index";
 	}
 }
