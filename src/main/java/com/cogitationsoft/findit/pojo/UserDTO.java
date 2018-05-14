@@ -61,9 +61,15 @@ public class UserDTO {
 		userDO.setNickname(userVO.getNickname());
 		userDO.setRegisterTime(userVO.getRegisterTime());
 		userDO.setOtherConnect(userVO.getOtherConnect());
-		userDO.setSex(userVO.getSex().getValue());
-		userDO.setState(userVO.getState().getValue());
-		userDO.setAuthority(userVO.getAuthority().getValue());
+		if(userVO.getSex() != null){
+			userDO.setSex(userVO.getSex().getValue());
+		}
+		if(userVO.getState() != null){
+			userDO.setState(userVO.getState().getValue());
+		}
+		if(userVO.getAuthority() != null){
+			userDO.setAuthority(userVO.getAuthority().getValue());
+		}
 		userDO.setUsername(userVO.getUsername());
 		userDO.setPhone(userVO.getPhone());
 		return userDO;

@@ -10,8 +10,8 @@
 			<div class="collapse navbar-collapse col-md-8" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a class="header-nav-but" href="/">首页</a></li>
-					<li><a class="header-nav-but" href="#">发布信息</a></li>
-					<li><a class="header-nav-but" href="#">找回证件</a></li>
+					<li><a class="header-nav-but" href="/lost">我丢失了</a></li>
+					<li><a class="header-nav-but" href="/find">我捡到了</a></li>
 					<li><a class="header-nav-but" href="#">感谢信</a></li>
 					<li><a class="header-nav-but" href="#">宣传墙</a></li>
 					<li><a class="header-nav-but" href="#">责任声明</a></li>
@@ -27,7 +27,6 @@
 	                <span><a href="/login">登录</a></span>
 	                <span><a href="/register">注册</a></span>
             </#if>
-
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>

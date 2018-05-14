@@ -1,5 +1,6 @@
 package com.cogitationsoft.findit.controller;
 
+import com.cogitationsoft.findit.pojo.UserVO;
 import com.cogitationsoft.findit.service.impl.DemoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -77,4 +78,25 @@ public class IndexController {
 		session.removeAttribute("userVO");
 		return "index";
 	}
+
+	@RequestMapping(value = "/lost", method=RequestMethod.GET)
+	public String lost(HttpServletResponse response, HttpSession session){
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		if((session.getAttribute("userVO") == null)){
+			return "user/login";
+		}
+		return "credential/lost";
+	}
+
+	@RequestMapping(value = "/find", method=RequestMethod.GET)
+	public String find(HttpServletResponse response, HttpSession session){
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		if((session.getAttribute("userVO") == null)){
+			return "user/login";
+		}
+		return "credential/find";
+	}
+
 }

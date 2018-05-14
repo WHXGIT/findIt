@@ -12,39 +12,44 @@
 <body>
 <#include "../header.ftl">
 <div class="my-center-container">
-	<div class="row">
-		<div class="col-md-4 ">
+	<div class="row" style="margin-top: 65px;">
+		<div class="col-md-5 ">
 			<div class="row">
-				<div>
+				<div class="col-md-6">
                     <img class="my-center-head-img" src="${userVO.headImg}">
 					<form method="post" action="/user/upload" enctype="multipart/form-data">
 						<input type="file" name="img">
 						<input type="submit" value="上传头像"/>
 					</form>
                 </div>
-				<div style="display: inline-block;">
-                    <input class="my-center-input" name="nickname" value="${userVO.nickname}" readonly>
+				<div style="display: inline-block;" class="col-md-6">
+                    昵称：<input id="myCenterNickname" class="my-center-input" name="nickname" value="${userVO.nickname}" readonly>
+                    <br>
+					电话：<input id="myCenterPhone" name="phone" value="${userVO.phone}" class="my-center-input" readonly>
+                    <br>
+					其他联系信息：<input id="myCenterOtherConnect" class="my-center-input" readonly name="otherConnect"
+					              value="${userVO.otherConnect!'无'}">
+					<br>
+					性别：<select id="myCenterSex" class="my-center-input">
+                            <option value="2">未知</option>
+                            <option value="1">男</option>
+                            <option value="0">女</option>
+                        </select>
+				    <br>
+                    年龄：<input id="myCenterAge" name="age" value="${userVO.age}" class="my-center-input" readonly>
+				    <br>
                     <span><a id="myCenterUSId" onclick="update();">修改</a></span><br>
-                    <span>欢迎来到个人中心</span>
                 </div>
             </div>
         </div>
-		<div class="col-md-3 col-md-offset-5">
-            ${userVO.username}<br>
-            <span>用户名</span>
+		<div class="col-md-3 col-md-offset-4">
+			${userVO.username}<br>
+                <span>用户名</span>
         </div>
 	</div>
 
     <hr class="my-center-hr"/>
 
-	<div class="row">
-		<div class="col-md-3">电话：<input name="phone" value="${userVO.phone}" class="my-center-input" readonly></div>
-		<div class="col-md-3">其他联系信息：<input class="my-center-input" readonly name="otherConnect"
-                                            value="${userVO.otherConnect!'无'}"></div>
-		<div class="col-md-3">性别：${userVO.sex}</div>
-		<div class="col-md-3">年龄：<input name="age" value="${userVO.age}" class="my-center-input" readonly></div>
-	</div>
-	<hr class="my-center-hr"/>
 	<div class="row">
 		<div class="col-xs-4">
             <div class="my-center-flow">
@@ -80,4 +85,5 @@
         </div>
 	</div>
 </div>
+<#include "../footer.ftl">
 </body>

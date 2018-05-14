@@ -21,8 +21,13 @@ function update() {
 		save();
 	}
 	function save() {
-
-		var data = {'nickname':'andyWong'};
+		var nickname = $("#myCenterNickname").val();
+		var age = $("#myCenterAge").val();
+		var sex = $("#myCenterSex").val();
+		var phone = $("#myCenterPhone").val();
+		var otherConnect = $("#myCenterOtherConnect").val();
+		var data = {'nickname': nickname, 'age':age, 'sex':sex, 'phone':phone,
+			'otherConnect':otherConnect};
 		$.ajax({
 			data: JSON.stringify(data),
 			dataType:"json",

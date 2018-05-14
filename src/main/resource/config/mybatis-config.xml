@@ -5,5 +5,9 @@
 <configuration>
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"></setting>
+		<setting name="logImpl" value="STDOUT_LOGGING"></setting>
 	</settings>
+	<typeAliases>
+		<typeAlias alias="CredentialDO" type="com.cogitationsoft.findit.pojo.CredentialDO"/>
+	</typeAliases>
 </configuration>

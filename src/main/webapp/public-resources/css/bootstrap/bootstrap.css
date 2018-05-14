@@ -3828,7 +3828,8 @@ tbody.collapse.in {
   position: relative;
   z-index: 2;
   float: left;
-  width: 100%;
+  /* width: 100%; */
+  width: 365px;
   margin-bottom: 0;
 }
 .input-group .form-control:focus {

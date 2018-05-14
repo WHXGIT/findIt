@@ -23,7 +23,7 @@ public interface UserService {
 	UserDO readById(String id);
 
 	/** @description： Update a user*/
-	UserDO update(UserDO userDO);
+	void update(UserDO userDO);
 
 	/** @description： Delete a user by id*/
 	void delete(String id);

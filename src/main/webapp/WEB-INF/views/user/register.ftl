@@ -67,7 +67,7 @@
 
 		</div>
 
-		<button  id=registerBtn>注册</button>
+		<button id=registerBtn>注册</button>
 		<a class="already_login" href="/login">使用已有账号登录</a>
 	</form>
 </div>

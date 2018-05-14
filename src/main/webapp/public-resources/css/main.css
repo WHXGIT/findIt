@@ -225,6 +225,7 @@ a:hover {
 .my-center-head-img{
 	width: 121px;
 	height: 121px;
+	border-radius: 50%;
 }
 
 .my-center-hr{
@@ -309,4 +310,42 @@ background-color: #01C2AF;
 	width: 110px;
 	padding: 5px;
 	background-color: #FFFEED;
+}
+
+.main-lost{
+	width: 500px;
+	margin: auto;
+}
+
+.main-lost-group{
+	padding: 10px 0;
+}
+
+.main-lost-name{
+	background-color: #F0F2F5;
+	border: 0;
+	text-align: right;
+	width: 135px;
+}
+
+.main-lost-input{
+	width: 365px;
+}
+
+.main-lost-title{
+	margin-top: 50px;
+	text-align:  center;
+	font-size: 21px;
+	color: brown;
+}
+
+.main-lost-button{
+border:  0;
+margin:  auto;
+width:  102px;
+height:  41px;
+color:  white;
+background: #01C2AF;
+border-radius:  5px;
+margin: 36px 238px;
 }

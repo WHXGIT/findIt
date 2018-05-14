@@ -53,7 +53,7 @@ public class UserController {
 		UserVO userSearch = userService.getUserVO(user);
 		if (userSearch.getUserId() != null && !"".equals(userSearch.getUserId())) {
 			session.setAttribute("userVO", userSearch);
-			return "user/reg_success";
+			return "redirect:/";
 		}
 		return "error/error";
 	}
@@ -131,10 +131,12 @@ public class UserController {
 		try {
 			userDO = dto.toUserDO(userVO);
 		} catch (UserDTOException e) {
+			e.setMessage("用户类型转换出现异常");
 			e.printStackTrace();
 		}
-		userDO.setUserId(((UserDO)session.getAttribute("userVO")).getUserId());
-		UserDO user = userService.update(userDO);
+		userDO.setUserId(((UserVO)session.getAttribute("userVO")).getUserId());
+		userService.update(userDO);
+		UserVO user = userService.getUserVO(userDO);
 		session.setAttribute("userVO", user);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("userVO", userVO);
@@ -164,7 +166,7 @@ public class UserController {
 		if(!file.isEmpty()){
 			String contentType=file.getContentType();
 			String filename = file.getOriginalFilename();
-			String path = session.getServletContext().getRealPath("HeadImg");
+			String path = session.getServletContext().getRealPath("public-resources\\HeadImg");
 			File rootPathDir = new File(path);
 			if (!rootPathDir.exists()) {
 				rootPathDir.mkdirs();
@@ -183,8 +185,7 @@ public class UserController {
 							new FileOutputStream(serverFile));
 					stream.write(bytes);
 					stream.close();
-					userService.updateHeadPath(rootPathDir.getAbsolutePath()
-							+ File.separator + filename);
+					userService.updateHeadPath("\\public-resources\\HeadImg"+  File.separator + filename);
 					UserVO user = (UserVO) session.getAttribute("userVO");
 					user.setHeadImg(rootPathDir.getAbsolutePath() + File.separator + filename);
 					session.setAttribute("userVO", user);
@@ -194,7 +195,6 @@ public class UserController {
 				}
 			}
 		}
-
 		return "redirect:/user/readMe";
 	}
 }

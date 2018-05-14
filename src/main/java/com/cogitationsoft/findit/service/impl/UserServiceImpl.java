@@ -52,18 +52,17 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
-	@Transactional
+	@Transactional(rollbackFor = RuntimeException.class)
 	@Override
-	public UserDO update(UserDO userDO) {
+	public void update(UserDO userDO) {
 		UserDO user = null;
 		try {
 			mapper.update(userDO);
-			user = mapper.readById(userDO.getUserId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			logger.error(e);
+			throw new RuntimeException();
 		}
-		return user;
 	}
 
 	@Transactional

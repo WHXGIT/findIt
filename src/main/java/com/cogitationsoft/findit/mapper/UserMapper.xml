@@ -26,10 +26,7 @@
 				phone = #{phone},
 			</if>
 			<if test='otherConnect != null and otherConnect != ""'>
-				otherConnect = #{otherConnect},
-			</if>
-			<if test='headImg != null and headImg != ""'>
-				headImg = #{headImg},
+				other_connect = #{otherConnect},
 			</if>
 			<if test='sex != null and sex != ""'>
 				sex = #{sex},

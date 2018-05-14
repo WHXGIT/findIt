@@ -25,7 +25,7 @@ public class CredentialDO {
 	private String lostAddress;
 	private LocalDateTime lostTime;
 	private String photoPath;
-	private Integer microReword;
+	private Integer microReward;
 
 	public CredentialDO() {
 	}
@@ -33,7 +33,7 @@ public class CredentialDO {
 	public CredentialDO(String credId, String credNo, String credName, String credType,
 	                    String credHoldName, String pickAddress, LocalDateTime pickTime, String description,
 	                    String address, String lostAddress, LocalDateTime lostTime,
-	                    String photoPath, Integer microReword) {
+	                    String photoPath, Integer microReward) {
 		this.credId = credId;
 		this.credNo = credNo;
 		this.credName = credName;
@@ -46,7 +46,7 @@ public class CredentialDO {
 		this.lostAddress = lostAddress;
 		this.lostTime = lostTime;
 		this.photoPath = photoPath;
-		this.microReword = microReword;
+		this.microReward = microReward;
 	}
 
 	public String getCredId() {
@@ -145,12 +145,12 @@ public class CredentialDO {
 		this.photoPath = photoPath;
 	}
 
-	public Integer getMicroReword() {
-		return microReword;
+	public Integer getMicroReward() {
+		return microReward;
 	}
 
-	public void setMicroReword(Integer microReword) {
-		this.microReword = microReword;
+	public void setMicroReward(Integer microReward) {
+		this.microReward = microReward;
 	}
 
 	@Override
@@ -174,13 +174,13 @@ public class CredentialDO {
 				Objects.equals(getLostAddress(), that.getLostAddress()) &&
 				Objects.equals(getLostTime(), that.getLostTime()) &&
 				Objects.equals(getPhotoPath(), that.getPhotoPath()) &&
-				Objects.equals(getMicroReword(), that.getMicroReword());
+				Objects.equals(getMicroReward(), that.getMicroReward());
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(getCredId(), getCredNo(), getCredName(), getCredType(),
 				getCredHoldName(), getPickAddress(), getPickTime(), getDescription(),
-				getAddress(), getLostAddress(), getLostTime(), getPhotoPath(), getMicroReword());
+				getAddress(), getLostAddress(), getLostTime(), getPhotoPath(), getMicroReward());
 	}
 }
