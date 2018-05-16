@@ -12,6 +12,8 @@
 					<li class="active"><a class="header-nav-but" href="/">首页</a></li>
 					<li><a class="header-nav-but" href="/lost">我丢失了</a></li>
 					<li><a class="header-nav-but" href="/find">我捡到了</a></li>
+					<#--<li><a class="header-nav-but" onclick="searchCred();">信息检索</a></li>-->
+					<li><a class="header-nav-but" href="/search" ">信息检索</a></li>
 					<li><a class="header-nav-but" href="#">感谢信</a></li>
 					<li><a class="header-nav-but" href="#">宣传墙</a></li>
 					<li><a class="header-nav-but" href="#">责任声明</a></li>

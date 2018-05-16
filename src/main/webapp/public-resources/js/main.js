@@ -45,54 +45,35 @@ function update() {
 }
 
 
-/** 生成验证码
- * @param {Number} min 范围最小值
- * @param {Number} max 范围最大值
- * @param {String} charStr指定的字符串中生成组合
- * @returns {String} 返回字符串结果
- * */
-function randomRange(min, max, charStr){
-	var returnStr = "", //返回的字符串
-		range; //生成的字符串长度
+//查询证件信息
+function searchCred(){
 
-	//随机生成字符
-	var autoGetStr = function(){
-		var charFun = function(){
-			var n= Math.floor(Math.random()*62);
-			if(n<10){
-				return n; //1-10
-			}
-			else if(n<36){
-				return String.fromCharCode(n+55); //A-Z
-			}
-			else{
-				return String.fromCharCode(n+61); //a-z
-			}
-		}
-		while(returnStr.length< range){
-			returnStr += charFun();
-		}
-	};
-
-	//根据指定的字符串中生成组合
-	var accordCharStrGet = function(){
-		for(var i=0; i<range; i++){
-			var index = Math.round(Math.random() * (charStr.length-1));
-			returnStr += charStr.substring(index,index+1);
-		}
-	};
-	if(typeof min == 'undefined'){
-		min = 10;
-	}
-	if(typeof max == 'string'){
-		charStr = max;
-	}
-	range = ((max && typeof max == 'number') ? Math.round(Math.random() * (max-min)) + min : min);
-
-	if(charStr){
-		accordCharStrGet();
-	}else{
-		autoGetStr();
-	}
-	return returnStr;
 }
+$(function page(){
+	//生成分页控件
+	kkpager.generPageHtml({
+		pno : '${p.pageNo}',
+		mode : 'link', //可选，默认就是link
+		//总页码
+		total : '${p.totalPage}',
+		//总数据条数
+		totalRecords : '${p.totalCount}',
+		//链接前部
+		hrefFormer : '${hrefFormer}',
+		//链接尾部
+		hrefLatter : '${hrefLatter}',
+		//链接算法
+		getLink : function(n){
+			//这里是默认算法，算法适用于比如：
+			//hrefFormer=http://www.xx.com/news/
+			//hrefLatter=.html
+			//那么首页（第1页）就是http://www.xx.com/news/20131212.html
+			//第2页就是http://www.xx.com/news/20131212_2.html
+			//第n页就是http://www.xx.com/news/20131212_n.html
+			if(n == 1){
+				return this.hrefFormer + this.hrefLatter;
+			}
+			return this.hrefFormer + '_' + n + this.hrefLatter;
+		}
+	});
+});

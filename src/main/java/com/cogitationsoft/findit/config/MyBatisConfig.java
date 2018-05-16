@@ -1,10 +1,12 @@
 package com.cogitationsoft.findit.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.omg.PortableInterceptor.Interceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +15,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import java.util.Properties;
 
 /**
  * @author: Andy
@@ -71,7 +75,20 @@ public class MyBatisConfig {
 		org.springframework.core.io.Resource resource = new ClassPathResource("config/mybatis-config.xml");
 		sessionFactory.setConfigLocation(resource);
 		sessionFactory.setTypeAliasesPackage("com.cogitationsoft.findit.pojo");
+		// 设置MyBatis分页插件
+		PageInterceptor pageInterceptor = this.initPageInterceptor();
+		sessionFactory.setPlugins(new PageInterceptor[]{pageInterceptor});
 		return sessionFactory.getObject();
+	}
+
+	public PageInterceptor initPageInterceptor(){
+		PageInterceptor pageInterceptor = new PageInterceptor();
+		Properties properties = new Properties();
+		properties.setProperty("helperDialect", "mysql");
+		properties.setProperty("offsetAsPageNum", "true");
+		properties.setProperty("rowBoundsWithCount", "true");
+		pageInterceptor.setProperties(properties);
+		return pageInterceptor;
 	}
 
 	@Bean

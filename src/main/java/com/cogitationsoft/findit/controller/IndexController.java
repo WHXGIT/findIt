@@ -99,4 +99,10 @@ public class IndexController {
 		return "credential/find";
 	}
 
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(HttpServletResponse response){
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		return "credential/search";
+	}
 }

@@ -1,10 +1,12 @@
 package com.cogitationsoft.findit.service.impl;
 
+import com.cogitationsoft.findit.common.Pagination;
 import com.cogitationsoft.findit.mapper.CredentialMapper;
 import com.cogitationsoft.findit.mapper.UserCredentialMapper;
 import com.cogitationsoft.findit.pojo.CredentialDO;
 import com.cogitationsoft.findit.pojo.UserCredentialDO;
 import com.cogitationsoft.findit.service.CredentialService;
+import com.github.pagehelper.PageHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @author: Andy
@@ -70,5 +73,14 @@ public class CredentialServiceImpl implements CredentialService{
 			throw new RuntimeException();
 		}
 		return credentialDO;
+	}
+
+	@Override
+	public Pagination<CredentialDO> listCredentialDO(Pagination<CredentialDO> page) {
+
+		PageHelper.startPage(page.getCurrentPage(), page.getPageCount());
+		List<CredentialDO> list = credentialMapper.listCredentialDO((CredentialDO) page.getData().get(0));
+		page.setData(list);
+		return page;
 	}
 }

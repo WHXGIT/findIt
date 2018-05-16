@@ -10,37 +10,41 @@
 </head>
 <body>
 <#include "../header.ftl">
-<form class="main-lost">
+<form class="main-lost" method="post" action="/credential/lost">
 	<div class="main-lost-title">
 		<span>捡到证件信息</span>
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">证件持有人姓名：</span>
-		<input type="text" class="form-control main-lost-input" placeholder="证件持有人姓名" aria-describedby="basic-addon1">
+		<input name="credHoldName" type="text" class="form-control main-lost-input" placeholder="证件持有人姓名" aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">证件名称：</span>
-		<input type="text" class="form-control main-lost-input" placeholder="证件名称" aria-describedby="basic-addon1">
+		<input name="credName" type="text" class="form-control main-lost-input" placeholder="证件名称" aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">证件编号：</span>
-		<input type="text" class="form-control main-lost-input" placeholder="证件编号" aria-describedby="basic-addon1">
+		<input name="credNo" type="text" class="form-control main-lost-input" placeholder="证件编号" aria-describedby="basic-addon1">
+	</div>
+	<div class="input-group main-lost-group">
+		<span class="input-group-addon main-lost-name" id="basic-addon1">证件持有人地址：</span>
+		<input name="address" type="text" class="form-control main-lost-input" placeholder="证件持有人地址" aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">捡到大概时间：</span>
-		<input type="text" class="form-control main-lost-input" placeholder="丢失大概时间" aria-describedby="basic-addon1">
+		<input name="lostTimeA" type="text" class="form-control main-lost-input" placeholder="捡到大概时间" aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">捡到大概地点：</span>
-		<input type="text" class="form-control main-lost-input" placeholder="丢失大概地点" aria-describedby="basic-addon1">
+		<input name="pickAddress" type="text" class="form-control main-lost-input" placeholder="丢失大概地点" aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">微报酬：</span>
-		<input type="text" class="form-control main-lost-input" placeholder="微报酬" aria-describedby="basic-addon1">
+		<input name="microReward" type="text" class="form-control main-lost-input" placeholder="微报酬" aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">描述：</span>
-		<input type="text" class="form-control" placeholder="描述" aria-describedby="basic-addon1">
+		<input name="description" type="text" class="form-control" placeholder="描述" aria-describedby="basic-addon1">
 	</div>
 	<div style="width: 100%;">
 		<input class="main-lost-button" type="submit" value="发布"/>

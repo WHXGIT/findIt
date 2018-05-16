@@ -3,6 +3,7 @@ package com.cogitationsoft.findit.mapper;
 import com.cogitationsoft.findit.pojo.CredentialDO;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @author: Andy
@@ -23,4 +24,6 @@ public interface CredentialMapper {
 	/** @description： 获取一条证书信息*/
 	CredentialDO getCredentialDO(CredentialDO credentialDO) throws SQLException;
 
+	/** @description： 分页查询、条件查询 证件列表*/
+	List<CredentialDO> listCredentialDO(CredentialDO credentialDO);
 }

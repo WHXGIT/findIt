@@ -1,7 +1,10 @@
 package com.cogitationsoft.findit.service;
 
+import com.cogitationsoft.findit.common.Pagination;
 import com.cogitationsoft.findit.pojo.CredentialDO;
 import com.cogitationsoft.findit.pojo.UserCredentialDO;
+
+import java.util.List;
 
 /**
  * @author: Andy
@@ -19,4 +22,7 @@ public interface CredentialService {
 
 	/** @description： 获取证件的信息*/
 	CredentialDO getCredentialDO(CredentialDO credentialDO);
+
+	/** @description： 分页查询、条件查询 证件列表*/
+	Pagination<CredentialDO> listCredentialDO(Pagination<CredentialDO> page);
 }
