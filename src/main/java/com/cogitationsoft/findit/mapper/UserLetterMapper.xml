@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cogitationsoft.findit.mapper.UserLetterMapper">
+	<insert id="insert" parameterType="com.cogitationsoft.findit.pojo.UserLetterDO">
+		insert into t_user_letter (id, letter_id, user_id, publish_time)
+		values (UUID(), #{letterId}, #{userId}, #{publishTime})
+	</insert>
+</mapper>

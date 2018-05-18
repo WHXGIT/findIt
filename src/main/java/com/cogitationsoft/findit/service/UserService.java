@@ -32,5 +32,5 @@ public interface UserService {
 	UserVO getUserVO(UserDO userDO);
 
 	/** @description： 修改头像地址*/
-	void updateHeadPath(String headImg);
+	void updateHeadPath(UserDO userDO);
 }

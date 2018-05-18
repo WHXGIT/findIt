@@ -185,7 +185,10 @@ public class UserController {
 							new FileOutputStream(serverFile));
 					stream.write(bytes);
 					stream.close();
-					userService.updateHeadPath("\\public-resources\\HeadImg"+  File.separator + filename);
+ 					UserDO userDO = new UserDO();
+ 					userDO.setUserId(((UserVO) session.getAttribute("userVO")).getUserId());
+ 					userDO.setHeadImg("\\public-resources\\HeadImg"+  File.separator + filename);
+					userService.updateHeadPath(userDO);
 					UserVO user = (UserVO) session.getAttribute("userVO");
 					user.setHeadImg(rootPathDir.getAbsolutePath() + File.separator + filename);
 					session.setAttribute("userVO", user);

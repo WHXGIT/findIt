@@ -105,4 +105,21 @@ public class IndexController {
 		response.setCharacterEncoding("utf-8");
 		return "credential/search";
 	}
+
+	@RequestMapping(value = "/letter", method = RequestMethod.GET)
+	public String letter(HttpServletResponse response){
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		return "letter/letter";
+	}
+
+	@RequestMapping(value = "/write_letter", method = RequestMethod.GET)
+	public String writeLetter(HttpServletResponse response, HttpSession session){
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		if(session.getAttribute("userVO") == null){
+			return "user/login";
+		}
+		return "letter/letter_write";
+	}
 }

@@ -48,8 +48,13 @@ public class UserServiceImpl implements UserService{
 	@Transactional
 	@Override
 	public UserDO readById(String id) {
-
-		return null;
+		UserDO userDO = null;
+		try {
+			userDO = mapper.readById(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return userDO;
 	}
 
 	@Transactional(rollbackFor = RuntimeException.class)
@@ -94,9 +99,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void updateHeadPath(String headImg) {
+	public void updateHeadPath(UserDO userDO) {
 		try {
-			mapper.updateHeadPath(headImg);
+			mapper.updateHeadPath(userDO);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

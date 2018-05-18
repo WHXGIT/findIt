@@ -4,9 +4,9 @@
 	<title>我的中心</title>
 	<link href="/public-resources/css/bootstrap/bootstrap.css" rel="stylesheet"/>
 	<link href="/public-resources/css/main.css" rel="stylesheet">
-	<script type="text/javascript" src="/public-resources/js/main.js"></script>
 	<script type="text/javascript" src="/public-resources/js/jquery/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/public-resources/js/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/public-resources/js/main.js"></script>
 
 </head>
 <body>

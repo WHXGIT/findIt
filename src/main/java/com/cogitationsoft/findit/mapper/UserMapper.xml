@@ -58,14 +58,14 @@
 
 	<select id="readById" resultType="UserDO" parameterType="String" flushCache="false" useCache="true"
 	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
-		SELECT * FROM t_user WHERE id = #{userId}
+		SELECT * FROM t_user WHERE user_id = #{userId}
 	</select>
 
 	<delete  id="delete" parameterType="String" flushCache="true" statementType="PREPARED" timeout="20">
 
 	</delete>
 
-	<update id="updateHeadPath" parameterType="String" flushCache="true" statementType="PREPARED" timeout="20">
-		UPDATE t_user SET head_img = #{headImg}
+	<update id="updateHeadPath" parameterType="UserDO" flushCache="true" statementType="PREPARED" timeout="20">
+		UPDATE t_user SET head_img = #{headImg} WHERE user_id = #{userId}
 	</update>
 </mapper>

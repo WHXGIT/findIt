@@ -32,5 +32,5 @@ public interface UserMapper {
 	UserDO getUserDO(UserDO userDO) throws SQLException;
 
 	/** @description： 修改头像*/
-	void updateHeadPath(String headImg) throws SQLException;
+	void updateHeadPath(UserDO userDO) throws SQLException;
 }

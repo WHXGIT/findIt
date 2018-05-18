@@ -53,6 +53,7 @@ a:hover {
 .main {
 	width: 1100px;
 	margin: auto;
+	overflow: hidden;
 }
 
 .main-all-card-group {
@@ -102,7 +103,7 @@ a:hover {
 }
 
 .footer-well {
-	height:  40px;
+	height: 40px;
 	line-height: 40px;
 	border-radius: 0;
 	margin: 0;
@@ -177,7 +178,7 @@ a:hover {
 /********************************************/
 .login_and_reg {
 	font-size: 14px;
-	margin-left: 101px;
+	margin-left: 35px;
 	/* margin-top: -11px; */
 }
 
@@ -192,7 +193,7 @@ a:hover {
 	margin-left: 778px;
 }
 
-.login{
+.login {
 	height: 100%;
 	background-image: url("../image/login.png");
 }
@@ -202,14 +203,15 @@ a:hover {
 	padding: 17px 37px;
 	font-size: 17px;
 }
-.login-hr{
+
+.login-hr {
 	height: 2px;
 	background-color: #01C2AF;
 	margin-top: 0;
 	margin-bottom: 36px;
 }
 
-.login-button{
+.login-button {
 	border: 0;
 	background-color: #01C2AF;
 	width: 100%;
@@ -217,29 +219,29 @@ a:hover {
 	border-radius: 5px;
 }
 
-.my-center-container{
+.my-center-container {
 	width: 1100px;
 	margin: auto;
 }
 
-.my-center-head-img{
+.my-center-head-img {
 	width: 121px;
 	height: 121px;
 	border-radius: 50%;
 }
 
-.my-center-hr{
-height: 1px;
-background-color: #01C2AF;
+.my-center-hr {
+	height: 1px;
+	background-color: #01C2AF;
 }
 
-.my-center-flow{
+.my-center-flow {
 	height: 176px;
 	width: 278px;
-	margin:  auto;
+	margin: auto;
 }
 
-.my-center-flow-single1{
+.my-center-flow-single1 {
 	height: 100%;
 	border: 0;
 	border-style: solid;
@@ -247,15 +249,15 @@ background-color: #01C2AF;
 	border-bottom-color: #108DE9;
 }
 
-
-.my-center-flow-single2{
+.my-center-flow-single2 {
 	height: 100%;
 	border: 0;
 	border-style: solid;
 	border-bottom-width: 4px;
 	border-bottom-color: #01C2AF;
 }
-.my-center-flow-single3{
+
+.my-center-flow-single3 {
 	height: 100%;
 	border: 0;
 	border-style: solid;
@@ -263,15 +265,15 @@ background-color: #01C2AF;
 	border-bottom-color: #FE6600;
 }
 
-
-.my-center-flow-single4{
+.my-center-flow-single4 {
 	height: 100%;
 	border: 0;
 	border-style: solid;
 	border-bottom-width: 4px;
 	border-bottom-color: #A3D1AB;
 }
-.my-center-flow-single5{
+
+.my-center-flow-single5 {
 	height: 100%;
 	border: 0;
 	border-style: solid;
@@ -279,15 +281,15 @@ background-color: #01C2AF;
 	border-bottom-color: #FF66CC;
 }
 
-
-.my-center-flow-single6{
+.my-center-flow-single6 {
 	height: 100%;
 	border: 0;
 	border-style: solid;
 	border-bottom-width: 4px;
 	border-bottom-color: #4BB4E4;
 }
-.my-center-flow-single7{
+
+.my-center-flow-single7 {
 	height: 100%;
 	border: 0;
 	border-style: solid;
@@ -295,8 +297,7 @@ background-color: #01C2AF;
 	border-bottom-color: #CC3300;
 }
 
-
-.my-center-flow-single8{
+.my-center-flow-single8 {
 	height: 100%;
 	border: 0;
 	border-style: solid;
@@ -304,7 +305,7 @@ background-color: #01C2AF;
 	border-bottom-color: #999999;
 }
 
-.my-center-input{
+.my-center-input {
 	border: 0;
 	border-radius: 3px;
 	width: 110px;
@@ -312,40 +313,226 @@ background-color: #01C2AF;
 	background-color: #FFFEED;
 }
 
-.main-lost{
+.main-lost {
 	width: 500px;
 	margin: auto;
 }
 
-.main-lost-group{
+.main-lost-group {
 	padding: 10px 0;
 }
 
-.main-lost-name{
+.main-lost-name {
 	background-color: #F0F2F5;
 	border: 0;
 	text-align: right;
 	width: 135px;
 }
 
-.main-lost-input{
+.main-lost-input {
 	width: 365px;
 }
 
-.main-lost-title{
+.main-lost-title {
 	margin-top: 50px;
-	text-align:  center;
+	text-align: center;
 	font-size: 21px;
 	color: brown;
 }
 
-.main-lost-button{
-border:  0;
-margin:  auto;
-width:  102px;
-height:  41px;
-color:  white;
-background: #01C2AF;
-border-radius:  5px;
-margin: 36px 238px;
+.main-lost-button {
+
+	border: 0;
+
+	margin: auto;
+
+	width: 102px;
+
+	height: 41px;
+
+	color: white;
+
+	background: #01C2AF;
+
+	border-radius: 5px;
+
+	margin: 36px 238px;
+}
+
+.search-card {
+	margin-top: 65px;
+	height: 200px;
+	background-color: white;
+	border-radius: 6px;
+	/* float:  left; */
+	/* margin: 65px 20px 20px 20px; */
+	margin-bottom: 10px;
+}
+
+.search-input {
+	width: 177px !important;
+	float: right !important;
+}
+
+.search-input-group {
+	margin-top: 20px;
+}
+
+.search-page {
+	margin: auto;
+	margin-left: 399px;
+}
+
+.page-kkpager {
+	padding-left: 256px !important;
+}
+
+.search-card-title {
+
+color: #da3dfe;
+
+font-size: 16px;
+
+margin-top: 25px;
+
+margin-left: 32px;
+}
+
+.search-card-content {
+	margin-left: 32px;
+}
+
+.search-card-operate {
+	width: 120px;
+	border: 0;
+	margin-top: 29px;
+	display: inline-block;
+	height: 43px;
+	background-color: #F7F9FA;
+}
+
+.search-card-operate:hover{
+	background-color: #01C2AF;
+}
+
+.search-card-hr{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.search-background{
+	width:100%;
+	z-index: 9;
+	height: 100%;
+	position: fixed;
+	background-color: white;
+	display: none;
+	top:0;
+	opacity: 0.8;
+	/* bottom: 0; */
+}
+
+.search-detail{
+	/* width: 400px; */
+	position: absolute;
+	margin-left: -200px;
+	margin-top: -191px;
+	top: 50%;
+	left: 50%;
+	/* display: block; */
+	z-index: 2000;
+	border: 1px solid #006699;
+	display: none;
+}
+
+.search-detail-card{
+
+width: 336px;
+
+height: 402px;
+
+background-color: #F0F2F5;
+}
+
+.search-detail-card-button{
+	
+border: 0;
+	
+background-color: #01C2AF;
+	
+width: 119px;
+	
+height: 37px;
+	
+border-radius: 5px;
+	
+position: absolute;
+	
+left:  101px;
+	
+/* bottom: -65px; */
+	
+top: 350px;
+	
+/* margin-left: 101px; */
+}
+.search-detail-card-content {
+
+padding-top: 26px;
+}
+
+.letter-search{
+	margin: 10px 0 10px 0;
+	float: right;
+}
+
+.letter-search input{
+	border-radius: 3px;
+	width:200px;
+	height: 25px;
+	line-height: 25px;
+}
+
+.letter-add{
+	clear: both;
+	height: 30px;
+	line-height: 30px;
+	border: 1px dashed #d4d4d4;
+	margin:10px 0 10px 0;
+	display: flex;
+	justify-content: center;
+	cursor: hand;
+}
+
+.letter-content{
+	padding-top:  20px;
+	background-color: white;
+	height:80px;
+	/* line-height: 80px; */
+	cursor: hand;
+	display: flex;
+	justify-content:space-between;
+	margin-bottom: 20px;
+}
+
+.letter-title{
+	margin-left: 20px;
+}
+
+.letter-date{
+	margin-right: 20px;
+}
+
+.letter-write{
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color:  #F0F2F5;
+}
+
+
+.letter-main{
+	background-color: #F0F2F5;
+	height: 100%;
+	opacity: 1;
 }

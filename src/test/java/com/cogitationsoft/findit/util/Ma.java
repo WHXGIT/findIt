@@ -12,8 +12,8 @@ import org.junit.Test;
 public class Ma {
 
 	@Test
-	public static void matchEnumValue(Class clazz, int value){
-		clazz = SexEnum.class;
-
+	public void testCodeUtil(){
+		String re = DoCodeUtil.doCode("1234567890");
+		System.out.println(re);
 	}
 }

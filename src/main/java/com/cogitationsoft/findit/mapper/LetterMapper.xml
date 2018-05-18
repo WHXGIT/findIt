@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cogitationsoft.findit.mapper.LetterMapper">
+	<insert id="insert" parameterType="com.cogitationsoft.findit.pojo.LetterDO">
+		<selectKey keyProperty="letterId" order="BEFORE" resultType="java.lang.String">
+			select UUID()
+		</selectKey>
+		insert into t_letter (letter_id, create_time, title, content,create_name,to_name)
+		values (#{letterId}, #{createTime}, #{title}, #{content}, #{createName}, #{toName})
+	</insert>
+</mapper>
