@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: Andy
@@ -78,6 +80,7 @@ public class CredentialController {
 		response.setCharacterEncoding("utf-8");
 		Pagination<CredentialDO> pagination = credentialService.listCredentialDO(page);
 		mav.addObject(pagination);
+		List list = new ArrayList();
 		mav.setViewName("/search");
 		return mav;
 	}

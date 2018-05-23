@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="/public-resources/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="/public-resources/js/main.js"></script>
 </head>
+<body>
 <#include "../header.ftl">
 <div class="login">
 <div class="login-card">

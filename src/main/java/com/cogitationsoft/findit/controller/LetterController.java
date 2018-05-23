@@ -1,9 +1,7 @@
 package com.cogitationsoft.findit.controller;
 
-import com.cogitationsoft.findit.pojo.LetterDO;
-import com.cogitationsoft.findit.pojo.UserDO;
-import com.cogitationsoft.findit.pojo.UserLetterDO;
-import com.cogitationsoft.findit.pojo.UserVO;
+import com.cogitationsoft.findit.common.Pagination;
+import com.cogitationsoft.findit.pojo.*;
 import com.cogitationsoft.findit.service.LetterService;
 import com.cogitationsoft.findit.service.UserLetterService;
 import com.cogitationsoft.findit.service.UserService;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -63,6 +62,18 @@ public class LetterController {
 			throw new RuntimeException();
 		}
 		return "letter/letter";
+	}
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public ModelAndView listCredential(@RequestBody Pagination<LetterDO> page,
+	                                   HttpServletResponse response){
+		ModelAndView mav = new ModelAndView();
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		Pagination<LetterDO> pagination = letterService.listLetterDO(page);
+		mav.addObject(pagination);
+		mav.setViewName("letter/letter");
+		return mav;
 	}
 
 }

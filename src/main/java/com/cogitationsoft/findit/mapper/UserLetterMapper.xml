@@ -6,4 +6,7 @@
 		insert into t_user_letter (id, letter_id, user_id, publish_time)
 		values (UUID(), #{letterId}, #{userId}, #{publishTime})
 	</insert>
+
+
+
 </mapper>

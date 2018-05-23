@@ -30,19 +30,6 @@
 	<div id="kkpager" class="page-kkpager">
 	</div>
 </div>
-<div class="search-background" id="search-background"></div>
-
-<div class="search-detail">
-    <div class="search-detail-card">
-        <ul class="search-detail-card-content">
-	        <li id="s-d-name"></li>
-	        <li id="s-d-no"></li>
-	        <li id="s-d-hold-name"></li>
-	        <li id="s-d-address"></li>
-        </ul>
-	    <button class="search-detail-card-button" onclick="ensure()">确定</button>
-    </div>
-</div>
 <#include "../footer.ftl">
 </body>
 <script>

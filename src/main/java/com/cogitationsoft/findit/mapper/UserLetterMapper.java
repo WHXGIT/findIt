@@ -1,6 +1,7 @@
 package com.cogitationsoft.findit.mapper;
 
 import com.cogitationsoft.findit.pojo.UserLetterDO;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.sql.SQLException;
 
@@ -10,6 +11,7 @@ import java.sql.SQLException;
  * @description:
  * @version: 1.0
  */
+@Mapper
 public interface UserLetterMapper {
 
 	void insert(UserLetterDO userLetterDO) throws SQLException;

@@ -1,7 +1,7 @@
 package com.cogitationsoft.findit.service;
 
+import com.cogitationsoft.findit.common.Pagination;
 import com.cogitationsoft.findit.pojo.LetterDO;
-import org.springframework.stereotype.Service;
 
 /**
  * @author: Andy
@@ -12,4 +12,7 @@ import org.springframework.stereotype.Service;
 public interface LetterService {
 	/** @description： 插入一个信件*/
 	LetterDO insert(LetterDO letterDO);
+
+	/** @description： 分页查询、条件查询 证件列表*/
+	Pagination<LetterDO> listLetterDO(Pagination<LetterDO> page);
 }

@@ -11,10 +11,10 @@ import java.util.Objects;
  * @description: 评论实体
  * @version: 1.0
  */
-@Alias(value="CommentDO")
+@Alias(value = "CommentDO")
 public class CommentDO {
 	private String commentId;
-	private String conmmentName;
+	private String commentName;
 	private String toName;
 	private LocalDateTime commentTime;
 	private String comment;
@@ -24,10 +24,10 @@ public class CommentDO {
 	public CommentDO() {
 	}
 
-	public CommentDO(String commentId, String conmmentName, String toName, LocalDateTime commentTime,
+	public CommentDO(String commentId, String commentName, String toName, LocalDateTime commentTime,
 	                 String comment, String commentUserId, String toUserId) {
 		this.commentId = commentId;
-		this.conmmentName = conmmentName;
+		this.commentName = commentName;
 		this.toName = toName;
 		this.commentTime = commentTime;
 		this.comment = comment;
@@ -43,12 +43,12 @@ public class CommentDO {
 		this.commentId = commentId;
 	}
 
-	public String getConmmentName() {
-		return conmmentName;
+	public String getCommentName() {
+		return commentName;
 	}
 
-	public void setConmmentName(String conmmentName) {
-		this.conmmentName = conmmentName;
+	public void setCommentName(String commentName) {
+		this.commentName = commentName;
 	}
 
 	public String getToName() {
@@ -101,7 +101,7 @@ public class CommentDO {
 		}
 		CommentDO commentDO = (CommentDO) o;
 		return Objects.equals(getCommentId(), commentDO.getCommentId()) &&
-				Objects.equals(getConmmentName(), commentDO.getConmmentName()) &&
+				Objects.equals(getCommentName(), commentDO.getCommentName()) &&
 				Objects.equals(getToName(), commentDO.getToName()) &&
 				Objects.equals(getCommentTime(), commentDO.getCommentTime()) &&
 				Objects.equals(getComment(), commentDO.getComment()) &&
@@ -111,6 +111,6 @@ public class CommentDO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getCommentId(), getConmmentName(), getToName(), getCommentTime(), getComment(), getCommentUserId(), getToUserId());
+		return Objects.hash(getCommentId(), getCommentName(), getToName(), getCommentTime(), getComment(), getCommentUserId(), getToUserId());
 	}
 }

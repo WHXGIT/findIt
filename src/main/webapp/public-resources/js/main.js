@@ -98,8 +98,7 @@ function initTable(pagination) {
 			"                <span>持有人：</span><span id=\"searchResultHoldName\">"+ data[i].credHoldName +"</span><br/>\n" +
 			"\t            <span>证件名：</span><span id=\"searchResultName\">"+ data[i].credName +"</span>\n" +
 			"            </div>\n" +
-			"            <button class=\"search-card-operate\" onclick='searchCredComment("+ JSON.stringify(data[i].credId) +");' id="+data[i].credId+">评论</button>\n" +
-			"            <button class=\"search-card-operate\" onclick='searchCredDetail("+ JSON.stringify(data[i]) +");' id="+data[i].credId+">详情</button>\n" +
+			"            <a class=\"search-card-operate\" href='/comment/credDetail/"+ data[i].credId +"' id="+data[i].credId+">详情</a>\n" +
 			"\t\t</div>";
 	}
 	$('#showList').html(showHtml);
@@ -134,44 +133,46 @@ function init(pagination) {
 
 //展示证件详细信息
 function searchCredDetail(credentail){
-	$('#search-background').css("display","block");
-	$('.search-detail').css("display","block");
-	$('#s-d-name').text("证件名：" + credentail.credName);
-	$('#s-d-no').text("证件编号：" + credentail.credNo);
-	$('#s-d-hold-name').text("持有人姓名：" + credentail.credHoldName);
-	$('#s-d-address').text("持有人地址：" + credentail.address);
+	window.location.href = "/credDetail";
+	searchCredComment(credentail.credId);
 }
 
-function ensure() {
-	$('.search-detail').css("display","none");
-	$('.search-background').css("display","none");
-}
-//评论
-function searchCredComment(id) {
-	alert(id);
+function addLetter() {
+	window.location.href="/write_letter";
 }
 
 //查询信件信息
 function searchLetter(pageCount, currentPage) {
-	var credNo = $("#searchCredNo").val();
-	var credName = $("#searchCredName").val();
-	var credHoldName = $("#searchCredHoldName").val();
-	var data = [{'credNo': credNo, 'credName': credName, 'credHoldName': credHoldName}];
+	var title = $("#title").val();
+	var data = [{'title': title}];
 	var dataPage = {'pageCount': pageCount, 'currentPage': currentPage, 'data': data};
 	$.ajax({
 		data: JSON.stringify(dataPage),
 		dataType: "json",
 		type: "post",
 		contentType: "application/json",
-		url: "/credential/search",
+		url: "/letter/search",
 		success: function (data) {
 			pagination = data.pagination;
 			sessionStorage.setItem("pagination", pagination);
 			init(pagination);
-			initTable(pagination);
+			initLetter(pagination);
 		},
 		error: function () {
 
 		}
 	});
+}
+
+function initLetter(pagination) {
+	var data = pagination.data;
+	var showHtml = '';
+
+	for(var i=0; i<data.length; i++){
+		showHtml+="<div class=\"letter-content\">\n" +
+			"            <div class=\"letter-title\">"+data[i].title+"</div>\n" +
+			"            <div class=\"letter-date\">"+data[i].createTime+"</div>\n" +
+			"        </div>";
+	}
+	$('#showList').html(showHtml);
 }

@@ -7,12 +7,14 @@
 
 	<script type="text/javascript" src="/public-resources/js/jquery/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/public-resources/js/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/public-resources/js/kkpager/kkpager.min.js"></script>
     <script type="text/javascript" src="/public-resources/js/main.js"></script>
 </head>
+<body>
 <#include "../header.ftl">
     <div class="main">
 	    <div class=" input-group search-input-group">
-		    <input id="letterName" type="text" class="form-control search-input" placeholder="姓名">
+		    <input id="title" type="text" class="form-control search-input" placeholder="标题">
 		    <span class="input-group-btn">
                 <button class="btn btn-default" onclick="clickSearchCred();">搜索</button>
             </span>
@@ -20,28 +22,10 @@
         <div class="letter-add" onclick="addLetter()">
             +添加
         </div>
-        <div class="letter-content">
-            <div class="letter-title">标题名称</div>
-            <div class="letter-date">2018-09-09</div>
-        </div>
-	    <div class="letter-content">
-		    <div class="letter-title">标题名称</div>
-		    <div class="letter-date">2018-09-09</div>
-	    </div>
-	    <div class="letter-content">
-		    <div class="letter-title">标题名称</div>
-		    <div class="letter-date">2018-09-09</div>
-	    </div>
-	    <div class="letter-content">
-		    <div class="letter-title">标题名称</div>
-		    <div class="letter-date">2018-09-09</div>
-	    </div>
-	    <div class="letter-content">
-		    <div class="letter-title">标题名称</div>
-		    <div class="letter-date">2018-09-09</div>
-	    </div>
+        <div id="showList">
 
-	    <div id="kkpager" class="page-kkpager">
+        </div>
+	    <div id="kkpager">
 	    </div>
     </div>
 <#include "../footer.ftl">

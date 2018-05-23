@@ -107,6 +107,9 @@ a:hover {
 	line-height: 40px;
 	border-radius: 0;
 	margin: 0;
+	width: 100%;
+	bottom: 0;
+	position:  fixed;
 	background-color: #01C2AF;
 }
 
@@ -188,6 +191,7 @@ a:hover {
 }
 
 .login-card {
+	/* background-color: wheat; */
 	width: 368px;
 	padding-top: 100px;
 	margin-left: 778px;
@@ -196,6 +200,8 @@ a:hover {
 .login {
 	height: 100%;
 	background-image: url("../image/login.png");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .u-a-p-login {
@@ -403,7 +409,7 @@ margin-left: 32px;
 }
 
 .search-card-operate {
-	width: 120px;
+	width: 240px;
 	border: 0;
 	margin-top: 29px;
 	display: inline-block;
@@ -433,23 +439,14 @@ margin-left: 32px;
 }
 
 .search-detail{
-	/* width: 400px; */
-	position: absolute;
-	margin-left: -200px;
-	margin-top: -191px;
-	top: 50%;
-	left: 50%;
-	/* display: block; */
-	z-index: 2000;
-	border: 1px solid #006699;
-	display: none;
+	
 }
 
 .search-detail-card{
 
 width: 336px;
 
-height: 402px;
+/* height: 402px; */
 
 background-color: #F0F2F5;
 }
@@ -478,7 +475,9 @@ top: 350px;
 }
 .search-detail-card-content {
 
-padding-top: 26px;
+/* padding-top: 26px; */
+
+/* margin-top: 19px; */
 }
 
 .letter-search{
@@ -535,4 +534,19 @@ padding-top: 26px;
 	background-color: #F0F2F5;
 	height: 100%;
 	opacity: 1;
+}
+
+.index-card-title{
+	font-size: 17px;
+	color: #01C2AF;
+}
+
+.index-card-number{
+	font-size: 30px;
+	/* color: #01C2AF; */
+}
+
+.index-card-hr{
+	background-color: beige;
+	border-top: none;
 }

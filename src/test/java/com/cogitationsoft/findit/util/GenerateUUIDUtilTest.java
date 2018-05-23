@@ -11,6 +11,7 @@ import org.junit.Test;
  */
 
 public class GenerateUUIDUtilTest {
+
 	@Test
 	public void testGenerateUUID(){
 

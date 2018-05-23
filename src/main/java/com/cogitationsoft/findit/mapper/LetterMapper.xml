@@ -9,4 +9,15 @@
 		insert into t_letter (letter_id, create_time, title, content,create_name,to_name)
 		values (#{letterId}, #{createTime}, #{title}, #{content}, #{createName}, #{toName})
 	</insert>
+
+	<select id="listLetterDO" resultType="LetterDO" parameterType="LetterDO" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT * FROM t_letter
+		<where>
+			<if test='title != null and title != ""'>
+				cred_no LIKE "%"#{title}"%"
+			</if>
+		</where>
+	</select>
 </mapper>

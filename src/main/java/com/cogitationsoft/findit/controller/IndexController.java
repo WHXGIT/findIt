@@ -23,17 +23,18 @@ public class IndexController {
 
 	@Autowired
 	private DemoServiceImpl service;
+
 	/**
 	 * Method Description:
 	 * 〈负责跳转到首页〉
 	 *
-	 * @param:      null
-	 * @return:     String： index explain: view name
-	 * @author:     Andy
-	 * @date:       5/3/2018 3:57 PM
+	 * @param: null
+	 * @return: String： index explain: view name
+	 * @author: Andy
+	 * @date: 5/3/2018 3:57 PM
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(HttpServletRequest request, HttpServletResponse response){
+	public String index(HttpServletRequest request, HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		return "index";
@@ -43,13 +44,13 @@ public class IndexController {
 	 * Method Description:
 	 * 〈跳转到注册页面〉
 	 *
-	 * @param:      null
+	 * @param: null
 	 * @return:
-	 * @author:     Andy
-	 * @date:       5/10/2018 10:36 AM
+	 * @author: Andy
+	 * @date: 5/10/2018 10:36 AM
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register(HttpServletResponse response){
+	public String register(HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		return "user/register";
@@ -59,67 +60,69 @@ public class IndexController {
 	 * Method Description:
 	 * 〈跳转到登录页面〉
 	 *
-	 * @param:      null
+	 * @param: null
 	 * @return:
-	 * @author:     Andy
-	 * @date:       5/10/2018 11:04 AM
+	 * @author: Andy
+	 * @date: 5/10/2018 11:04 AM
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(HttpServletResponse response){
+	public String login(HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		return "user/login";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(HttpSession session, HttpServletResponse response){
+	public String logout(HttpSession session, HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		session.removeAttribute("userVO");
 		return "index";
 	}
 
-	@RequestMapping(value = "/lost", method=RequestMethod.GET)
-	public String lost(HttpServletResponse response, HttpSession session){
+	@RequestMapping(value = "/lost", method = RequestMethod.GET)
+	public String lost(HttpServletResponse response, HttpSession session) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
-		if((session.getAttribute("userVO") == null)){
+		if ((session.getAttribute("userVO") == null)) {
 			return "user/login";
 		}
 		return "credential/lost";
 	}
 
-	@RequestMapping(value = "/find", method=RequestMethod.GET)
-	public String find(HttpServletResponse response, HttpSession session){
+	@RequestMapping(value = "/find", method = RequestMethod.GET)
+	public String find(HttpServletResponse response, HttpSession session) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
-		if((session.getAttribute("userVO") == null)){
+		if ((session.getAttribute("userVO") == null)) {
 			return "user/login";
 		}
 		return "credential/find";
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String search(HttpServletResponse response){
+	public String search(HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		return "credential/search";
 	}
 
 	@RequestMapping(value = "/letter", method = RequestMethod.GET)
-	public String letter(HttpServletResponse response){
+	public String letter(HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		return "letter/letter";
 	}
 
 	@RequestMapping(value = "/write_letter", method = RequestMethod.GET)
-	public String writeLetter(HttpServletResponse response, HttpSession session){
+	public String writeLetter(HttpServletResponse response, HttpSession session) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
-		if(session.getAttribute("userVO") == null){
+		if (session.getAttribute("userVO") == null) {
 			return "user/login";
 		}
 		return "letter/letter_write";
 	}
+
+
 }

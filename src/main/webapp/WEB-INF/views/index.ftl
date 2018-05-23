@@ -14,40 +14,43 @@
 	<div class="row main-all-card-group">
 		<div class="col-md-3 main-all-card">
 			<div class="main-all-card-content">
-					<span>
-						总发布物品数
+					<span class="index-card-title">
+						总发布证件
+                        <span style="color: #A8A693;float: right;" class="glyphicon glyphicon-info-sign"></span>
 					</span>
-				<br/>
-				<span>
-						166003
-					</span>
-				<hr/>
-				<span>陪伴您:</span>
+                    <br/>
+                    <span class="index-card-number">
+                            166003 件
+                    </span>
+                    <hr class="index-card-hr"/>
+                    <span>陪伴您:</span>
 			</div>
 		</div>
 		<div class="col-md-3 col-md-offset-1 main-all-card">
 			<div class="main-all-card-content">
-					<span>
-						总发布物品数
+					<span class="index-card-title">
+						证件已寻找
+                        <span style="color: #A8A693;float: right;" class="glyphicon glyphicon-info-sign"></span>
 					</span>
-				<br/>
-				<span>
-						166003
-					</span>
-				<hr/>
-				<span>陪伴您:</span>
+                    <br/>
+                    <span class="index-card-number">
+                                166003 件
+                    </span>
+				<hr class="index-card-hr"/>
+                    <span>陪伴您:</span>
 			</div>
 		</div>
 		<div class="col-md-3 col-md-offset-1 main-all-card">
 			<div class="main-all-card-content">
-					<span>
-						总发布物品数
+					<span class="index-card-title">
+						收到感谢信
+                        <span style="color: #A8A693;float: right;" class="glyphicon glyphicon-info-sign"></span>
 					</span>
-				<br/>
-				<span>
-						166003
-					</span>
-				<hr/>
+                    <br/>
+                    <span class="index-card-number">
+                                166003 封
+                    </span>
+				<hr class="index-card-hr"/>
 				<span>陪伴您:</span>
 			</div>
 		</div>

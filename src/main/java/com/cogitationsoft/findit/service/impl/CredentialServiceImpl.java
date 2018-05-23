@@ -7,6 +7,7 @@ import com.cogitationsoft.findit.pojo.CredentialDO;
 import com.cogitationsoft.findit.pojo.UserCredentialDO;
 import com.cogitationsoft.findit.service.CredentialService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,10 @@ public class CredentialServiceImpl implements CredentialService{
 		PageHelper.startPage(page.getCurrentPage(), page.getPageCount());
 		List<CredentialDO> list = credentialMapper.listCredentialDO((CredentialDO) page.getData().get(0));
 		page.setData(list);
+		PageInfo pagelist = new PageInfo(list);
+		page.setCurrentPage(pagelist.getPageNum());
+		page.setTotalCount(Integer.valueOf(String.valueOf(pagelist.getTotal())));
+		page.setTotalPage(pagelist.getPages());
 		return page;
 	}
 }

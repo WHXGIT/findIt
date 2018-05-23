@@ -1,9 +1,9 @@
 package com.cogitationsoft.findit.mapper;
 
 import com.cogitationsoft.findit.pojo.LetterDO;
-import org.apache.ibatis.jdbc.SQL;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @author: Andy
@@ -15,5 +15,8 @@ public interface LetterMapper {
 
 	/** @description： 插入一个信件*/
 	void insert(LetterDO letterDO) throws SQLException;
+
+	/** @description： 分页查询、 信件列表*/
+	List<LetterDO> listLetterDO(LetterDO letterDO);
 
 }
