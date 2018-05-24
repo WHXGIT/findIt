@@ -26,4 +26,6 @@ public interface CredentialMapper {
 
 	/** @description： 分页查询、条件查询 证件列表*/
 	List<CredentialDO> listCredentialDO(CredentialDO credentialDO);
+
+	void insertByImg(CredentialDO credentialDO) throws SQLException;
 }

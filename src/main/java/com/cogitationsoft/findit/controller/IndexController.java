@@ -2,15 +2,25 @@ package com.cogitationsoft.findit.controller;
 
 import com.cogitationsoft.findit.pojo.UserVO;
 import com.cogitationsoft.findit.service.impl.DemoServiceImpl;
+import com.google.code.kaptcha.impl.DefaultKaptcha;
+import org.apache.logging.log4j.core.util.UuidUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author: Andy
@@ -24,6 +34,8 @@ public class IndexController {
 	@Autowired
 	private DemoServiceImpl service;
 
+	@Autowired
+	private DefaultKaptcha captchaProducer;
 	/**
 	 * Method Description:
 	 * 〈负责跳转到首页〉
@@ -124,5 +136,46 @@ public class IndexController {
 		return "letter/letter_write";
 	}
 
+
+	/**
+	 * Method Description:
+	 * 〈生成验证码〉
+	 *
+	 * @param:      null
+	 * @return:
+	 * @author:     Andy
+	 * @date:       5/23/2018 5:01 PM
+	 */
+	@RequestMapping(value = "/captcha-image")
+	public ModelAndView getKaptchaImage(HttpServletRequest request,
+	                                    HttpServletResponse response,
+	                                    HttpSession session) throws Exception {
+		response.setDateHeader("Expires", 0);
+		response.setHeader("Cache-Control",
+				"no-store, no-cache, must-revalidate");
+		response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+		response.setHeader("Pragma", "no-cache");
+		response.setContentType("image/jpeg");
+
+		String capText = captchaProducer.createText();
+		session.setAttribute("code", capText);
+		try {
+			String uuid= UuidUtil.getTimeBasedUuid().toString();
+			Cookie cookie = new Cookie("captchaCode",uuid);
+			response.addCookie(cookie);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		BufferedImage bi = captchaProducer.createImage(capText);
+		ServletOutputStream out = response.getOutputStream();
+		ImageIO.write(bi, "jpg", out);
+		try {
+			out.flush();
+		} finally {
+			out.close();
+		}
+		return null;
+	}
 
 }

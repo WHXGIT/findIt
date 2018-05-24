@@ -25,4 +25,7 @@ public interface CredentialService {
 
 	/** @description： 分页查询、条件查询 证件列表*/
 	Pagination<CredentialDO> listCredentialDO(Pagination<CredentialDO> page);
+
+	/** @description： 添加身份证图片*/
+	void insertByImg(CredentialDO credentialDO);
 }

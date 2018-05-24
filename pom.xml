@@ -165,6 +165,19 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
+		<!--ocr识别依赖-->
+		<dependency>
+			<groupId>com.youtu</groupId>
+			<artifactId>youtu-java-sdk</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.youtu.json</groupId>
+			<artifactId>youtu-json</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+
 		<!-- Apache Commons FileUpload -->
 		<!-- http://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
@@ -180,6 +193,13 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.penggle</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

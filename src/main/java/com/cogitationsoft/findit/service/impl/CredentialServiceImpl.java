@@ -88,4 +88,13 @@ public class CredentialServiceImpl implements CredentialService{
 		page.setTotalPage(pagelist.getPages());
 		return page;
 	}
+
+	@Override
+	public void insertByImg(CredentialDO credentialDO) {
+		try {
+			credentialMapper.insertByImg(credentialDO);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

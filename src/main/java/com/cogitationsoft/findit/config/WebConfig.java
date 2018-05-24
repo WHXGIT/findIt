@@ -1,5 +1,7 @@
 package com.cogitationsoft.findit.config;
 
+import com.google.code.kaptcha.impl.DefaultKaptcha;
+import com.google.code.kaptcha.util.Config;
 import freemarker.cache.WebappTemplateLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,6 +24,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Locale;
+import java.util.Properties;
 
 import static freemarker.template.Configuration.VERSION_2_3_23;
 

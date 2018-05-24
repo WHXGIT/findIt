@@ -176,3 +176,25 @@ function initLetter(pagination) {
 	}
 	$('#showList').html(showHtml);
 }
+
+function changeCode() {
+	window.location.href="/captcha-image";
+}
+
+/**
+* decirption: 捡到证件填写还是上传图片
+* params：
+* author: Andy
+*/
+
+function changeMode(flag) {
+	if(flag == 0){
+		$(".main-lost").css("display","none");
+		$(".main-identify").css("display","block");
+	}
+	if(flag == 1){
+		$(".main-lost").css("display","block");
+		$(".main-identify").css("display","none");
+	}
+
+}

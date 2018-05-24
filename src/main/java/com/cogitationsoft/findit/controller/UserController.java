@@ -59,11 +59,19 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(@ModelAttribute("userDO") UserDO userDO, HttpServletResponse response,
+	public ModelAndView login(@ModelAttribute("userDO") UserDO userDO, @RequestParam("code")String code, HttpServletResponse response,
 	                          HttpSession session) throws LoginException {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		ModelAndView mav = new ModelAndView();
+		if(code != null && !"".equals(code)){
+			if(!code.equals(session.getAttribute("code"))){
+				mav.addObject("errorMessage", "验证码错误");
+				mav.setViewName("user/login");
+				return mav;
+			}
+		}
+
 		try {
 			if (userDO.getUsername() == null || "".equals(userDO.getUsername())) {
 				throw new LoginException("警告：该用户有非法操作的嫌疑！");
@@ -72,6 +80,7 @@ public class UserController {
 			if (userDO.getPassword() == null || "".equals(userDO.getPassword())) {
 				throw new LoginException("警告：该用户有非法操作的嫌疑！");
 			}
+
 			userDO.setPassword(GenerateBASE64MD5Util.toDigest(userDO.getPassword()));
 			UserVO user = userService.getUserVO(userDO);
 			mav.addObject("userVO", user);
@@ -79,7 +88,8 @@ public class UserController {
 				session.setAttribute("userVO", user);
 				mav.setViewName("/index");
 			} else {
-				mav.setViewName("error/error");
+				mav.addObject("errorMessage", "用户名或密码错误");
+				mav.setViewName("user/login");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

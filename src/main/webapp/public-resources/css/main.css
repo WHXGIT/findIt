@@ -38,6 +38,7 @@ a:hover {
 }
 
 .logo {
+	color: lightgoldenrodyellow;
 	font-size: 29px;
 	line-height: 59px;
 	float: right;
@@ -47,6 +48,7 @@ a:hover {
 	font-family: -webkit-pictograph;
 	font-size: 29px;
 	line-height: 59px;
+	/* font-family: -webkit-pictograph; */
 	float: right;
 }
 
@@ -109,7 +111,7 @@ a:hover {
 	margin: 0;
 	width: 100%;
 	bottom: 0;
-	position:  fixed;
+	position: fixed;
 	background-color: #01C2AF;
 }
 
@@ -180,6 +182,7 @@ a:hover {
 
 /********************************************/
 .login_and_reg {
+	color: lightyellow;
 	font-size: 14px;
 	margin-left: 35px;
 	/* margin-top: -11px; */
@@ -191,10 +194,19 @@ a:hover {
 }
 
 .login-card {
-	/* background-color: wheat; */
+	opacity: 0.8;
+	border-radius: 7px;
+	background-color: white;
 	width: 368px;
-	padding-top: 100px;
+	top: 159px;
+	position:  relative;
 	margin-left: 778px;
+	padding-bottom: 6px;
+}
+
+.login-card-content{
+	margin: auto;
+	width: 80%;
 }
 
 .login {
@@ -202,6 +214,7 @@ a:hover {
 	background-image: url("../image/login.png");
 	background-repeat: no-repeat;
 	background-size: cover;
+	/* background: hsla(274, 100%, 90%, 0.2); */
 }
 
 .u-a-p-login {
@@ -322,6 +335,7 @@ a:hover {
 .main-lost {
 	width: 500px;
 	margin: auto;
+	display: none;
 }
 
 .main-lost-group {
@@ -341,7 +355,7 @@ a:hover {
 
 .main-lost-title {
 	margin-top: 50px;
-	text-align: center;
+	/* text-align: center; */
 	font-size: 21px;
 	color: brown;
 }
@@ -395,13 +409,13 @@ a:hover {
 
 .search-card-title {
 
-color: #da3dfe;
+	color: #da3dfe;
 
-font-size: 16px;
+	font-size: 16px;
 
-margin-top: 25px;
+	margin-top: 25px;
 
-margin-left: 32px;
+	margin-left: 32px;
 }
 
 .search-card-content {
@@ -417,136 +431,147 @@ margin-left: 32px;
 	background-color: #F7F9FA;
 }
 
-.search-card-operate:hover{
+.search-card-operate:hover {
 	background-color: #01C2AF;
 }
 
-.search-card-hr{
+.search-card-hr {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
-.search-background{
-	width:100%;
+.search-background {
+	width: 100%;
 	z-index: 9;
 	height: 100%;
 	position: fixed;
 	background-color: white;
 	display: none;
-	top:0;
+	top: 0;
 	opacity: 0.8;
 	/* bottom: 0; */
 }
 
-.search-detail{
-	
+.search-detail {
+
 }
 
-.search-detail-card{
+.search-detail-card {
 
-width: 336px;
+	width: 336px;
 
-/* height: 402px; */
+	/* height: 402px; */
 
-background-color: #F0F2F5;
+	background-color: #F0F2F5;
 }
 
-.search-detail-card-button{
-	
-border: 0;
-	
-background-color: #01C2AF;
-	
-width: 119px;
-	
-height: 37px;
-	
-border-radius: 5px;
-	
-position: absolute;
-	
-left:  101px;
-	
-/* bottom: -65px; */
-	
-top: 350px;
-	
-/* margin-left: 101px; */
+.search-detail-card-button {
+
+	border: 0;
+
+	background-color: #01C2AF;
+
+	width: 119px;
+
+	height: 37px;
+
+	border-radius: 5px;
+
+	position: absolute;
+
+	left: 101px;
+
+	/* bottom: -65px; */
+
+	top: 350px;
+
+	/* margin-left: 101px; */
 }
+
 .search-detail-card-content {
 
-/* padding-top: 26px; */
+	/* padding-top: 26px; */
 
-/* margin-top: 19px; */
+	/* margin-top: 19px; */
 }
 
-.letter-search{
+.letter-search {
 	margin: 10px 0 10px 0;
 	float: right;
 }
 
-.letter-search input{
+.letter-search input {
 	border-radius: 3px;
-	width:200px;
+	width: 200px;
 	height: 25px;
 	line-height: 25px;
 }
 
-.letter-add{
+.letter-add {
 	clear: both;
 	height: 30px;
 	line-height: 30px;
 	border: 1px dashed #d4d4d4;
-	margin:10px 0 10px 0;
+	margin: 10px 0 10px 0;
 	display: flex;
 	justify-content: center;
 	cursor: hand;
 }
 
-.letter-content{
-	padding-top:  20px;
+.letter-content {
+	padding-top: 20px;
 	background-color: white;
-	height:80px;
+	height: 80px;
 	/* line-height: 80px; */
 	cursor: hand;
 	display: flex;
-	justify-content:space-between;
+	justify-content: space-between;
 	margin-bottom: 20px;
 }
 
-.letter-title{
+.letter-title {
 	margin-left: 20px;
 }
 
-.letter-date{
+.letter-date {
 	margin-right: 20px;
 }
 
-.letter-write{
+.letter-write {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background-color:  #F0F2F5;
+	background-color: #F0F2F5;
 }
 
-
-.letter-main{
+.letter-main {
 	background-color: #F0F2F5;
 	height: 100%;
 	opacity: 1;
 }
 
-.index-card-title{
+.index-card-title {
 	font-size: 17px;
 	color: #01C2AF;
 }
 
-.index-card-number{
+.index-card-number {
 	font-size: 30px;
 	/* color: #01C2AF; */
 }
 
-.index-card-hr{
+.index-card-hr {
 	background-color: beige;
 	border-top: none;
+}
+
+.login-error-message{
+	color:  red;
+	top: 69px;
+	position: absolute;
+}
+
+.main-identify{
+	width: 500px;
+	margin: auto;
 }
