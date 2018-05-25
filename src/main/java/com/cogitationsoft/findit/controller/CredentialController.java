@@ -1,5 +1,6 @@
 package com.cogitationsoft.findit.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.cogitationsoft.findit.common.Pagination;
 import com.cogitationsoft.findit.pojo.CredentialDO;
 import com.cogitationsoft.findit.pojo.UserCredentialDO;
@@ -105,6 +106,7 @@ public class CredentialController {
 	 */
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String uploadFileHandler(@RequestParam(value = "img") MultipartFile file,
+	                                @RequestParam(value = "microReward") String microReward,
 	                                HttpServletResponse response, HttpServletRequest request,
 	                                HttpSession session) throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -133,16 +135,23 @@ public class CredentialController {
 					stream.close();
 					JSONObject result = OCRUtil.getYoutuOCR().IdCardOcr(rootPathDir.getAbsolutePath()
 							+ File.separator + filename, 0);
-					System.out.println(result);
-					/*UserDO userDO = new UserDO();
-					userDO.setUserId(((UserVO) session.getAttribute("userVO")).getUserId());
-					userDO.setHeadImg("\\public-resources\\CredImg"+  File.separator + filename);
-					credentialService.insertByImg(userDO);
-					UserVO user = (UserVO) session.getAttribute("userVO");
-					user.setHeadImg(rootPathDir.getAbsolutePath() + File.separator + filename);
-					session.setAttribute("userVO", user);
-					System.out.println("Write file: " + serverFile);*/
+
+					String id = result.getString("id");
+					String address = result.getString("address");
+					String sex = result.getString("sex");
+					String birth = result.getString("birth");
+					String name = result.getString("name");
+					String cerdPath = "\\public-resources\\CredImg"+  File.separator + filename;
+					CredentialDO credentialDO = new CredentialDO();
+					credentialDO.setCredNo(id);
+					credentialDO.setCredName("身份证");
+					credentialDO.setAddress(address);
+					credentialDO.setCredHoldName(name);
+					credentialDO.setPhotoPath(cerdPath);
+					credentialDO.setMicroReward(Integer.valueOf(microReward));
+					credentialService.insert(credentialDO);
 				} catch (Exception e) {
+					e.printStackTrace();
 					System.out.println("Error Write file: " + filename);
 				}
 			}

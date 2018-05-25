@@ -55,11 +55,11 @@
 	</div>
 </form>
 
-<form class="main-identify" method="post" action="/credential/upload">
+<form class="main-identify" method="post" action="/credential/upload" enctype="multipart/form-data">
     <div>
         <span>请确保您上传的照片是 <b>身份证</b>，否则请选择 <b>其他证件信息</b></span>
     </div>
-    <input type="file" name="img" multiple="multiple">
+    <input type="file" name="img">
 
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">微报酬：</span>
