@@ -2,6 +2,7 @@ package com.cogitationsoft.findit.pojo;
 
 import org.apache.ibatis.type.Alias;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -16,13 +17,13 @@ public class UserCredentialDO {
 	private String credId;
 	private String userId;
 	private Integer state;
-	private Integer publishTime;
+	private LocalDateTime publishTime;
 
 	public UserCredentialDO() {
 
 	}
 
-	public UserCredentialDO(String id, String credId, String userId, Integer state, Integer publishTime) {
+	public UserCredentialDO(String id, String credId, String userId, Integer state, LocalDateTime publishTime) {
 		this.id = id;
 		this.credId = credId;
 		this.userId = userId;
@@ -62,11 +63,11 @@ public class UserCredentialDO {
 		this.state = state;
 	}
 
-	public Integer getPublishTime() {
+	public LocalDateTime getPublishTime() {
 		return publishTime;
 	}
 
-	public void setPublishTime(Integer publishTime) {
+	public void setPublishTime(LocalDateTime publishTime) {
 		this.publishTime = publishTime;
 	}
 

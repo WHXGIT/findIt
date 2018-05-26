@@ -171,7 +171,7 @@ function initLetter(pagination) {
 	for(var i=0; i<data.length; i++){
 		showHtml+="<div class=\"letter-content\">\n" +
 			"            <div class=\"letter-title\">"+data[i].title+"</div>\n" +
-			"            <div class=\"letter-date\">"+data[i].createTime+"</div>\n" +
+			"            <div class=\"letter-date\">"+data[i].createTime.toString()+"</div>\n" +
 			"        </div>";
 	}
 	$('#showList').html(showHtml);
@@ -189,12 +189,52 @@ function changeCode() {
 
 function changeMode(flag) {
 	if(flag == 0){
-		$(".main-lost").css("display","none");
+		$(".main-find").css("display","none");
 		$(".main-identify").css("display","block");
 	}
 	if(flag == 1){
-		$(".main-lost").css("display","block");
+		$(".main-find").css("display","block");
 		$(".main-identify").css("display","none");
 	}
 
+}
+
+/**
+* decirption: 首页加载是默认执行查询
+* params：
+* author: Andy
+*/
+function onloadInit() {
+	$.ajax({
+		dataType: "json",
+		type: "get",
+		contentType: "application/json",
+		url: "/index/init",
+		success: function (data) {
+			var data = data.vo;
+			$("#all-cred-no").text(data.allPublishCred + " 件");
+			$("#all-user-no").text("用户数量 " + data.allUser + " 人");
+			$("#get-cred").text(data.allFindCred + "件");
+			$("#unfind-cred").text("未被寻找 " + data.allLeftCred + " 件");
+			$("#get-letter").text(data.allLetter + " 封");
+			$("#involve-user").text("涉及人数 " + data.allUsedletter + " 人");
+			var showHtml = '';
+
+			for(var i=0; i<data.message.length; i++){
+				var message = JSON.parse(data.message[i]);
+				if(message.cred_name == undefined){
+					message.cred_name = "一封感谢信"
+				}
+				showHtml+="<div>" +
+					"<img class='index-activity-img' src='"+message.head_img+"' />" +
+					"<span><b>" + message.nickname+"</b></span> 发布了" +
+					"<span><b>"+ message.cred_name +"</b></span>" +
+					"</div>";
+			}
+			$('#index-activity').html(showHtml);
+		},
+		error: function () {
+
+		}
+	});
 }

@@ -62,11 +62,14 @@ public class CredentialController {
 		LocalDateTime time = LocalDateTime.parse(lostTime, df);
 		credentialDO.setLostTime(time);
 		credentialDO.setPickTime(time);
+		credentialDO.setCredType("0");
 		credentialService.insert(credentialDO);
 		String id = credentialDO.getCredId();
 		UserCredentialDO userCredentialDO = new UserCredentialDO();
 		userCredentialDO.setUserId(((UserVO) (session.getAttribute("userVO"))).getUserId());
 		userCredentialDO.setCredId(id);
+		LocalDateTime dateTime = LocalDateTime.now();
+		userCredentialDO.setPublishTime(dateTime);
 		credentialService.insertRelation(userCredentialDO);
 		return "redirect:/";
 	}
@@ -104,6 +107,7 @@ public class CredentialController {
 	 * @author:     Andy
 	 * @date:       5/11/2018 2:25 PM
 	 */
+	@Transactional(rollbackFor = RuntimeException.class)
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String uploadFileHandler(@RequestParam(value = "img") MultipartFile file,
 	                                @RequestParam(value = "microReward") String microReward,
@@ -146,13 +150,23 @@ public class CredentialController {
 					credentialDO.setCredNo(id);
 					credentialDO.setCredName("身份证");
 					credentialDO.setAddress(address);
+					credentialDO.setPickTime(LocalDateTime.now());
 					credentialDO.setCredHoldName(name);
+					credentialDO.setCredType("0");
 					credentialDO.setPhotoPath(cerdPath);
 					credentialDO.setMicroReward(Integer.valueOf(microReward));
 					credentialService.insert(credentialDO);
+					String credId = credentialDO.getCredId();
+					UserCredentialDO userCredentialDO = new UserCredentialDO();
+					userCredentialDO.setUserId(((UserVO) (session.getAttribute("userVO"))).getUserId());
+					userCredentialDO.setCredId(credId);
+					LocalDateTime dateTime = LocalDateTime.now();
+					userCredentialDO.setPublishTime(dateTime);
+					credentialService.insertRelation(userCredentialDO);
 				} catch (Exception e) {
 					e.printStackTrace();
 					System.out.println("Error Write file: " + filename);
+					throw new RuntimeException();
 				}
 			}
 		}

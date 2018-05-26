@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>FindIt</title>
 	<link href="/public-resources/css/bootstrap/bootstrap.css" rel="stylesheet"/>
-	<link href="/public-resources/css/layDate/theme/default/laydate.css" rel="stylesheet" />
+	<link href="/public-resources/css/layDate/theme/default/laydate.css" rel="stylesheet"/>
 	<link href="/public-resources/css/main.css" rel="stylesheet">
 	<script type="text/javascript" src="/public-resources/js/jquery/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/public-resources/js/laydate/laydate.js"></script>

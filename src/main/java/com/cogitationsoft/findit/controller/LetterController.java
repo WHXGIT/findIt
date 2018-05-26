@@ -61,7 +61,7 @@ public class LetterController {
 			e.printStackTrace();
 			throw new RuntimeException();
 		}
-		return "letter/letter";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.POST)

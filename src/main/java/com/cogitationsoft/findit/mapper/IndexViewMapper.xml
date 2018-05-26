@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cogitationsoft.findit.mapper.IndexViewMapper">
+	<select id="getAllPublishCred" resultType="Integer" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT COUNT(*) FROM t_credential
+	</select>
+
+	<select id="getAllFindCred" resultType="Integer" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT COUNT(*) FROM t_credential WHERE cred_type='1'
+	</select>
+
+	<select id="getAllLetter" resultType="Integer" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT COUNT(*) FROM t_letter
+	</select>
+
+	<select id="getAllUser" resultType="Integer" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT COUNT(*) FROM t_user
+	</select>
+
+	<select id="getAllLeftCred" resultType="Integer" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT COUNT(*) FROM t_credential WHERE cred_type='0'
+	</select>
+
+	<select id="getAllUsedletter" resultType="Integer" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT COUNT(*) FROM t_letter
+	</select>
+
+	<select id="getResentCredRecord" resultType="hashmap" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT * FROM t_user_credential AS RELA LEFT JOIN t_user as U ON RELA.user_id = U.user_id
+		LEFT JOIN t_credential AS C ON c.cred_id = RELA.cred_id ORDER BY RELA.publish_time desc limit 0, 3
+	</select>
+
+	<select id="getResentLetterRecord" resultType="hashmap" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT * FROM t_user_letter AS RELA LEFT JOIN t_user as U ON RELA.user_id = U.user_id
+		LEFT JOIN t_letter AS C ON c.letter_id = RELA.letter_id ORDER BY c.create_time desc limit 0, 3
+	</select>
+</mapper>

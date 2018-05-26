@@ -17,7 +17,7 @@
     <hr>
 </div>
 
-<form class="main-lost" method="post" action="/credential/lost">
+<form class="main-find" method="post" action="/credential/lost">
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">证件持有人姓名：</span>
 		<input required="required" name="credHoldName" type="text" class="form-control main-lost-input" placeholder="证件持有人姓名" aria-describedby="basic-addon1">
