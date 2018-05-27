@@ -4,6 +4,7 @@ import com.cogitationsoft.findit.pojo.CredentialDO;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: Andy
@@ -28,4 +29,7 @@ public interface CredentialMapper {
 	List<CredentialDO> listCredentialDO(CredentialDO credentialDO);
 
 	void insertByImg(CredentialDO credentialDO) throws SQLException;
+
+	/** @description： 获取我相关的证件信息*/
+	List<CredentialDO> listSelfCredentialDO(Map<String, Object> map) throws SQLException;
 }

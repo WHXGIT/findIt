@@ -45,15 +45,15 @@ public class CredentialController {
 	 * Method Description:
 	 * 〈Insert a credential〉
 	 *
-	 * @param:      null
+	 * @param: null
 	 * @return:
-	 * @author:     Andy
-	 * @date:       5/17/2018 2:36 PM
+	 * @author: Andy
+	 * @date: 5/17/2018 2:36 PM
 	 */
 	@Transactional(rollbackFor = Exception.class)
 	@RequestMapping(value = "/lost", method = RequestMethod.POST)
 	public String insert(@ModelAttribute CredentialDO credentialDO, HttpServletResponse response,
-	                   HttpSession session, HttpServletRequest request) {
+	                     HttpSession session, HttpServletRequest request) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 
@@ -79,33 +79,39 @@ public class CredentialController {
 	 * Method Description:
 	 * 〈分页展示列表〉
 	 *
-	 * @param:      null
+	 * @param: null
 	 * @return:
-	 * @author:     Andy
-	 * @date:       5/17/2018 2:37 PM
+	 * @author: Andy
+	 * @date: 5/17/2018 2:37 PM
 	 */
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public ModelAndView listCredential(@RequestBody Pagination<CredentialDO> page,
-	                                   HttpServletResponse response){
+	                                   HttpServletResponse response, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
-		Pagination<CredentialDO> pagination = credentialService.listCredentialDO(page);
+		Pagination<CredentialDO> pagination = null;
+		if (((CredentialDO) page.getData().get(0)).getCredType() != null) {
+			pagination = credentialService.listSelfCredentialDO(page,
+					((UserVO) session.getAttribute("userVO")).getUserId());
+		} else {
+			pagination = credentialService.listCredentialDO(page);
+		}
 		mav.addObject(pagination);
 		List list = new ArrayList();
-		mav.setViewName("/search");
+		mav.setViewName("credential/search");
 		return mav;
 	}
 
 
 	/**
 	 * Method Description:
-	 * 〈上传头像〉
+	 * 〈上传身份证照片〉
 	 *
-	 * @param:      image
+	 * @param: image
 	 * @return:
-	 * @author:     Andy
-	 * @date:       5/11/2018 2:25 PM
+	 * @author: Andy
+	 * @date: 5/11/2018 2:25 PM
 	 */
 	@Transactional(rollbackFor = RuntimeException.class)
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
@@ -115,8 +121,8 @@ public class CredentialController {
 	                                HttpSession session) throws IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
-		if(!file.isEmpty()){
-			String contentType=file.getContentType();
+		if (!file.isEmpty()) {
+			String contentType = file.getContentType();
 			String filename = file.getOriginalFilename();
 			String path = session.getServletContext().getRealPath("public-resources\\CredImg");
 			File rootPathDir = new File(path);
@@ -145,7 +151,7 @@ public class CredentialController {
 					String sex = result.getString("sex");
 					String birth = result.getString("birth");
 					String name = result.getString("name");
-					String cerdPath = "\\public-resources\\CredImg"+  File.separator + filename;
+					String cerdPath = "\\public-resources\\CredImg" + File.separator + filename;
 					CredentialDO credentialDO = new CredentialDO();
 					credentialDO.setCredNo(id);
 					credentialDO.setCredName("身份证");

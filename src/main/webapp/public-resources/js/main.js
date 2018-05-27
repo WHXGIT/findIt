@@ -13,10 +13,12 @@ function update() {
 	var text = $('#myCenterUSId').text();
 	if (text == '修改') {
 		$('input').attr("readonly", false);
+		$('#myCenterSex').removeAttr("disabled");
 		$('#myCenterUSId').text('保存');
 	}
 	if (text == '保存') {
 		$('input').attr("readonly", true);
+		$('#myCenterSex').attr("disabled","disabled");
 		$('#myCenterUSId').text('修改');
 		save();
 	}
@@ -25,6 +27,13 @@ function update() {
 		var nickname = $("#myCenterNickname").val();
 		var age = $("#myCenterAge").val();
 		var sex = $("#myCenterSex").val();
+		if(sex == 2){
+			sex = "UNKNOWN";
+		}else if(sex == 1){
+			sex = "MALE";
+		}else {
+			sex = "FEMALE";
+		}
 		var phone = $("#myCenterPhone").val();
 		var otherConnect = $("#myCenterOtherConnect").val();
 		var data = {
@@ -63,6 +72,49 @@ function searchCred(pageCount, currentPage) {
 	var credHoldName = $("#searchCredHoldName").val();
 	var data = [{'credNo': credNo, 'credName': credName, 'credHoldName': credHoldName}];
 	var dataPage = {'pageCount': pageCount, 'currentPage': currentPage, 'data': data};
+	excuteSearchCred(dataPage);
+}
+
+function clickSearchSelfCred(type) {
+	searchSelfCred(9, 1, type);
+}
+function searchSelfCred(pageCount, currentPage, type) {
+	var data = [{'credType': type}];
+	var dataPage = {'pageCount': pageCount, 'currentPage': currentPage, 'data': data};
+	excuteSearchSelfCred(dataPage);
+}
+
+/**
+ * decirption: 执行证件查询(垃圾代码)
+ * params: 需要发送的数据
+ * author: Andy
+ */
+function excuteSearchSelfCred(dataPage) {
+	$.ajax({
+		data: JSON.stringify(dataPage),
+		dataType: "json",
+		type: "post",
+		async : false,
+		contentType: "application/json",
+		url: "/credential/search",
+		success: function (data) {
+			pagination = data.pagination;
+			sessionStorage.setItem("pagination", pagination);
+			init(pagination);
+			initTable(pagination);
+		},
+		error: function () {
+
+		}
+	});
+}
+
+/**
+* decirption: 执行证件查询
+* params: 需要发送的数据
+* author: Andy
+*/
+function excuteSearchCred(dataPage) {
 	$.ajax({
 		data: JSON.stringify(dataPage),
 		dataType: "json",
@@ -232,6 +284,37 @@ function onloadInit() {
 					"</div>";
 			}
 			$('#index-activity').html(showHtml);
+		},
+		error: function () {
+
+		}
+	});
+}
+
+function initUserCenter(){
+	$.ajax({
+		dataType: "json",
+		type: "get",
+		contentType: "application/json",
+		url: "/user/userCenter",
+		success: function (data) {
+			var data = data.vo;
+			$("#duringDays").text(data.duringDays + " 天");
+			$("#allPublishCred").text(data.allPublishCred + " 件");
+			$("#allFinishCred").text(data.allFinishCred + " 件");
+			$("#allGetLetter").text(data.allGetLetter + " 封");
+			$("#allSentLetter").text(data.allSentLetter + " 封");
+			$("#allCommentCred").text(data.allCommentCred + " 件");
+			$("#allMocriReward").text(data.allMocriReward + " 元");
+			$("#head-img").html("<img class='my-center-head-img' src='"+ data.userVO.headImg+"'>");
+
+			if(data.userVO.sex == "UNKNOWN"){
+				$("#myCenterSex").val(2);
+			}else if(data.userVO.sex == "MALE"){
+				$("#myCenterSex").val(1);
+			}else {
+				$("#myCenterSex").val(0);
+			}
 		},
 		error: function () {
 

@@ -36,7 +36,5 @@
     </form>
 <#include "../footer.ftl">
 </body>
-<script>
-	searchLetter(5, 1);
-</script>
+
 </html>

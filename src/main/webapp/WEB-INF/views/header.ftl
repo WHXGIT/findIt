@@ -18,7 +18,7 @@
 					<li><a class="header-nav-but" href="/write_letter">写感谢信</a></li>
 					<li><a class="header-nav-but" href="#">宣传墙</a></li>
 					<li><a class="header-nav-but" href="#">责任声明</a></li>
-					<li><a class="header-nav-but" href="/user/readMe">我的中心</a></li>
+					<li><a class="header-nav-but" href="/readMe">我的中心</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 

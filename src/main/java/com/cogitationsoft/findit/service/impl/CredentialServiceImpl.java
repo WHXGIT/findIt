@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: Andy
@@ -81,6 +83,26 @@ public class CredentialServiceImpl implements CredentialService{
 
 		PageHelper.startPage(page.getCurrentPage(), page.getPageCount());
 		List<CredentialDO> list = credentialMapper.listCredentialDO((CredentialDO) page.getData().get(0));
+		page.setData(list);
+		PageInfo pagelist = new PageInfo(list);
+		page.setCurrentPage(pagelist.getPageNum());
+		page.setTotalCount(Integer.valueOf(String.valueOf(pagelist.getTotal())));
+		page.setTotalPage(pagelist.getPages());
+		return page;
+	}
+
+	@Override
+	public Pagination<CredentialDO> listSelfCredentialDO(Pagination<CredentialDO> page, String id) {
+		PageHelper.startPage(page.getCurrentPage(), page.getPageCount());
+		List<CredentialDO> list = null;
+		try {
+			Map<String, Object> map = new HashMap<>();
+			map.put("credType", ((CredentialDO) page.getData().get(0)).getCredType());
+			map.put("id", id);
+			list = credentialMapper.listSelfCredentialDO(map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		page.setData(list);
 		PageInfo pagelist = new PageInfo(list);
 		page.setCurrentPage(pagelist.getPageNum());

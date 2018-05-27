@@ -16,7 +16,7 @@
 		<div class="col-md-5 ">
 			<div class="row">
 				<div class="col-md-6">
-                    <img class="my-center-head-img" src="${userVO.headImg}">
+                    <div id="head-img"></div>
 					<form method="post" action="/user/upload" enctype="multipart/form-data">
 						<input type="file" name="img">
 						<input type="submit" value="上传头像"/>
@@ -30,7 +30,7 @@
 					其他联系信息：<input id="myCenterOtherConnect" class="my-center-input" readonly name="otherConnect"
 					              value="${userVO.otherConnect!'无'}">
 					<br>
-					性别：<select id="myCenterSex" class="my-center-input">
+					性别：<select id="myCenterSex" class="my-center-input" disabled="disabled">
                             <option value="2">未知</option>
                             <option value="1">男</option>
                             <option value="0">女</option>
@@ -44,7 +44,9 @@
         </div>
 		<div class="col-md-3 col-md-offset-4">
 			${userVO.username}<br>
-                <span>用户名</span>
+                <span>用户名</span><br>
+                陪伴您：
+            <span id="duringDays"></span>
         </div>
 	</div>
 
@@ -54,36 +56,59 @@
 		<div class="col-xs-4">
             <div class="my-center-flow">
 	            <div class="row">
-		            <div class="col-md-6 my-center-flow-single1">测试</div>
-		            <div class="col-md-6 my-center-flow-single2">测试</div>
+		            <div class="col-md-6 my-center-flow-single1">
+                        <span id="allPublishCred"></span>
+                        <span>发布的所有证件</span>
+                    </div>
+		            <div class="col-md-6 my-center-flow-single2">
+                        <span id="allFinishCred">
+
+                        </span>
+                        <span>完结的所有证件</span>
+                    </div>
 	            </div>
             </div>
         </div>
 		<div class="col-xs-4">
             <div class="my-center-flow">
 	            <div class="row">
-		            <div class="col-md-6 my-center-flow-single3">测试</div>
-		            <div class="col-md-6 my-center-flow-single4">测试</div>
+		            <div class="col-md-6 my-center-flow-single3">
+                        <span id="allCommentCred">
+
+                        </span>
+                        <span>我评论过的证件</span>
+                    </div>
+		            <div class="col-md-6 my-center-flow-single4">
+                        <span id="allMocriReward">
+
+                        </span>
+                        <span>微报酬总额</span>
+                    </div>
 	            </div>
 		    </div>
         </div>
 		<div class="col-xs-4">
 			<div class="my-center-flow">
 				<div class="row">
-					<div class="col-md-6 my-center-flow-single5">测试</div>
-					<div class="col-md-6 my-center-flow-single6">测试</div>
-				</div>
-			</div>
-        </div>
-		<div class="col-xs-4">
-			<div class="my-center-flow">
-				<div class="row">
-					<div class="col-md-6 my-center-flow-single7">测试</div>
-					<div class="col-md-6 my-center-flow-single8">测试</div>
+					<div class="col-md-6 my-center-flow-single5">
+                        <span id="allGetLetter">
+
+                        </span>
+                        <span>收到感谢信</span>
+                    </div>
+					<div class="col-md-6 my-center-flow-single6">
+                        <span id="allSentLetter"></span>
+                        <span>
+                            发送的感谢信
+                        </span>
+                    </div>
 				</div>
 			</div>
         </div>
 	</div>
 </div>
 <#include "../footer.ftl">
+<script>
+    initUserCenter();
+</script>
 </body>

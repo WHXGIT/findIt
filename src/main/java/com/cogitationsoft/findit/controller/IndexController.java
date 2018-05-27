@@ -119,6 +119,13 @@ public class IndexController {
 		return "credential/search";
 	}
 
+	@RequestMapping(value = "/searchSelf", method = RequestMethod.GET)
+	public String searchSelf(HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		return "credential/search_self";
+	}
+
 	@RequestMapping(value = "/letter", method = RequestMethod.GET)
 	public String letter(HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
@@ -134,6 +141,30 @@ public class IndexController {
 			return "user/login";
 		}
 		return "letter/letter_write";
+	}
+
+	/**
+	 * Method Description:
+	 * 〈查看个人信息/我的中心〉
+	 *
+	 * @param: null
+	 * @return:
+	 * @author: Andy
+	 * @date: 5/11/2018 9:35 AM
+	 */
+	@RequestMapping(value = "/readMe", method = RequestMethod.GET)
+	public ModelAndView readme(HttpServletResponse response, HttpSession session) {
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		UserVO userVO = (UserVO) session.getAttribute("userVO");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("userVO", userVO);
+		if (userVO != null) {
+			mav.setViewName("user/myCenter");
+		} else {
+			mav.setViewName("user/login");
+		}
+		return mav;
 	}
 
 

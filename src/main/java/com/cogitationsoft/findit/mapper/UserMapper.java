@@ -4,6 +4,7 @@ import com.cogitationsoft.findit.pojo.UserDO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 /**
  * @author: Andy
@@ -33,4 +34,18 @@ public interface UserMapper {
 
 	/** @description： 修改头像*/
 	void updateHeadPath(UserDO userDO) throws SQLException;
+
+	LocalDateTime getDuringDays(String id) throws SQLException;
+
+	Integer getAllPublishCred(String id) throws SQLException;
+
+	Integer getAllFinishCred(String id) throws SQLException;
+
+	Integer getAllGetLetter(String id) throws SQLException;
+
+	Integer getAllSentLetter(String id) throws SQLException;
+
+	Integer getAllCommentCred(String id) throws SQLException;
+
+	Integer getAllMocriReward(String id) throws SQLException;
 }

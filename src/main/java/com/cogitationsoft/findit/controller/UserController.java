@@ -2,6 +2,7 @@ package com.cogitationsoft.findit.controller;
 
 import com.cogitationsoft.findit.common.exception.LoginException;
 import com.cogitationsoft.findit.common.exception.UserDTOException;
+import com.cogitationsoft.findit.pojo.UserCenterVO;
 import com.cogitationsoft.findit.pojo.UserDO;
 import com.cogitationsoft.findit.pojo.UserDTO;
 import com.cogitationsoft.findit.pojo.UserVO;
@@ -9,6 +10,7 @@ import com.cogitationsoft.findit.service.UserService;
 import com.cogitationsoft.findit.util.GenerateBASE64MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +22,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 /**
  * @author: Andy
@@ -49,6 +52,7 @@ public class UserController {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		System.out.println(userDO.toString());
+		userDO.setHeadImg("\\public-resources\\HeadImg\\download.jpg");
 		UserDO user = userService.create(userDO);
 		UserVO userSearch = userService.getUserVO(user);
 		if (userSearch.getUserId() != null && !"".equals(userSearch.getUserId())) {
@@ -71,7 +75,6 @@ public class UserController {
 				return mav;
 			}
 		}
-
 		try {
 			if (userDO.getUsername() == null || "".equals(userDO.getUsername())) {
 				throw new LoginException("警告：该用户有非法操作的嫌疑！");
@@ -97,30 +100,17 @@ public class UserController {
 		return mav;
 	}
 
-
-	/**
-	 * Method Description:
-	 * 〈查看个人信息/我的中心〉
-	 *
-	 * @param: null
-	 * @return:
-	 * @author: Andy
-	 * @date: 5/11/2018 9:35 AM
-	 */
-	@RequestMapping(value = "/readMe", method = RequestMethod.GET)
-	public ModelAndView readme(HttpServletResponse response, HttpSession session) {
+	@RequestMapping(value = "/userCenter", method = RequestMethod.GET)
+	public Model getUserCenter(HttpServletResponse response, HttpSession session, Model model){
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		UserVO userVO = (UserVO) session.getAttribute("userVO");
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("userVO", userVO);
-		if (userVO != null) {
-			mav.setViewName("user/myCenter");
-		} else {
-			mav.setViewName("user/login");
-		}
-		return mav;
+		UserCenterVO vo = userService.getUserCenterVO(userVO.getUserId());
+		vo.setUserVO(userVO);
+		model.addAttribute("vo", vo);
+		return model;
 	}
+
 
 	/**
 	 * Method Description:
@@ -200,7 +190,7 @@ public class UserController {
  					userDO.setHeadImg("\\public-resources\\HeadImg"+  File.separator + filename);
 					userService.updateHeadPath(userDO);
 					UserVO user = (UserVO) session.getAttribute("userVO");
-					user.setHeadImg(rootPathDir.getAbsolutePath() + File.separator + filename);
+					user.setHeadImg("\\public-resources\\HeadImg"+  File.separator + filename);
 					session.setAttribute("userVO", user);
 					System.out.println("Write file: " + serverFile);
 				} catch (Exception e) {
@@ -208,6 +198,6 @@ public class UserController {
 				}
 			}
 		}
-		return "redirect:/user/readMe";
+		return "redirect:/userCenter";
 	}
 }

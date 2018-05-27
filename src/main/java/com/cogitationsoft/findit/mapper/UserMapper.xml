@@ -11,12 +11,12 @@
 	</resultMap>-->
 	<insert id="create" parameterType="UserDO" flushCache="true" statementType="PREPARED">
 		INSERT INTO t_user
-		( user_id, username, password, nickname, phone )
+		( user_id, username, password, nickname, phone, head_img )
 		VALUES
-		(UUID(),#{username},#{password},#{nickname},#{phone})
+		(UUID(),#{username},#{password},#{nickname},#{phone}, #{headImg})
 	</insert>
 
-	<update  id="update" parameterType="UserDO" flushCache="true" statementType="PREPARED" timeout="20">
+	<update id="update" parameterType="UserDO" flushCache="true" statementType="PREPARED" timeout="20">
 		UPDATE t_user
 		<set>
 			<if test='nickname != null and nickname != ""'>
@@ -61,11 +61,88 @@
 		SELECT * FROM t_user WHERE user_id = #{userId}
 	</select>
 
-	<delete  id="delete" parameterType="String" flushCache="true" statementType="PREPARED" timeout="20">
+	<delete id="delete" parameterType="String" flushCache="true" statementType="PREPARED" timeout="20">
 
 	</delete>
 
 	<update id="updateHeadPath" parameterType="UserDO" flushCache="true" statementType="PREPARED" timeout="20">
 		UPDATE t_user SET head_img = #{headImg} WHERE user_id = #{userId}
 	</update>
+
+
+	<select id="getDuringDays" resultType="java.time.LocalDateTime" parameterType="String" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT register_time FROM t_user WHERE user_id = #{id}
+	</select>
+
+	<select id="getAllPublishCred" resultType="Integer" parameterType="String" flushCache="false" useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT COUNT(*) FROM t_user_credential WHERE user_id = #{id}
+	</select>
+	<select id="getAllFinishCred" resultType="Integer" parameterType="String" flushCache="false" useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT
+		COUNT(t_credential.cred_id)
+		FROM
+	t_user_credential
+	LEFT JOIN t_credential ON t_credential.cred_id = t_user_credential.cred_id
+	where cred_type= '1'
+	GROUP BY
+	user_id
+	HAVING user_id = #{id}
+	</select>
+
+	<select id="getAllGetLetter" resultType="Integer" parameterType="String" flushCache="false" useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+	SELECT
+	count(*)
+	FROM
+	t_user
+	LEFT JOIN t_user_letter ON t_user.user_id = t_user_letter.user_id
+	LEFT JOIN t_letter ON t_letter.letter_id = t_user_letter.letter_id
+	WHERE to_name = t_user.nickname
+	GROUP BY
+	t_user.user_id
+	HAVING
+	t_user.user_id = #{id}
+	</select>
+	<select id="getAllSentLetter" resultType="Integer" parameterType="String" flushCache="false" useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+	SELECT
+	count(*)
+	FROM
+	t_user
+	LEFT JOIN t_user_letter ON t_user.user_id = t_user_letter.user_id
+	LEFT JOIN t_letter ON t_letter.letter_id = t_user_letter.letter_id
+	WHERE create_name = t_user.nickname
+	GROUP BY
+	t_user.user_id
+	HAVING
+	t_user.user_id = #{id}
+	</select>
+
+	<select id="getAllCommentCred" resultType="Integer" parameterType="String" flushCache="false" useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+			SELECT
+	COUNT( comment_id )
+FROM
+	t_user
+	LEFT JOIN t_comment ON t_user.user_id = t_comment.comment_user_id
+GROUP BY
+	user_id
+HAVING
+	t_user.user_id = #{id}
+	</select>
+
+	<select id="getAllMocriReward" resultType="Integer" parameterType="String" flushCache="false" useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT
+	SUM(micro_reward)
+	FROM
+	t_credential LEFT JOIN
+	t_user_credential ON t_credential.cred_id = t_user_credential.cred_id
+	WHERE
+	user_id = #{id} AND cred_type = '1'
+	</select>
 </mapper>
