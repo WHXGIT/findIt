@@ -47,19 +47,32 @@ public class UserController {
 	 * @date: 5/10/2018 3:15 PM
 	 */
 	@RequestMapping(value = "/reg", method = RequestMethod.POST)
-	public String register(@ModelAttribute("userDO") UserDO userDO, HttpServletResponse response,
+	public ModelAndView register(@ModelAttribute("userDO") UserDO userDO,
+	                       @RequestParam("code")String code,
+	                       HttpServletResponse response,
 	                       HttpSession session) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
+		ModelAndView mav = new ModelAndView();
+		if(code != null && !"".equals(code)){
+			if(!code.equals(session.getAttribute("code"))){
+				mav.addObject("errorMessage", "验证码错误");
+				mav.setViewName("user/register");
+				return mav;
+			}
+		}
 		System.out.println(userDO.toString());
 		userDO.setHeadImg("\\public-resources\\HeadImg\\download.jpg");
+		userDO.setRegisterTime(LocalDateTime.now());
 		UserDO user = userService.create(userDO);
 		UserVO userSearch = userService.getUserVO(user);
 		if (userSearch.getUserId() != null && !"".equals(userSearch.getUserId())) {
 			session.setAttribute("userVO", userSearch);
-			return "redirect:/";
+			mav.setViewName("redirect:/");
+			return mav;
 		}
-		return "error/error";
+		mav.setViewName("error/error");
+		return mav;
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -88,8 +101,17 @@ public class UserController {
 			UserVO user = userService.getUserVO(userDO);
 			mav.addObject("userVO", user);
 			if (user != null) {
-				session.setAttribute("userVO", user);
-				mav.setViewName("/index");
+				if(user.getAuthority().getValue() == 2){
+					mav.setViewName("admin/index");
+				}else {
+					if (user.getState().getValue() == 1) {
+						session.setAttribute("userVO", user);
+						mav.setViewName("/index");
+					} else {
+						mav.addObject("errorMessage", "您的账号已被禁止");
+						mav.setViewName("user/login");
+					}
+				}
 			} else {
 				mav.addObject("errorMessage", "用户名或密码错误");
 				mav.setViewName("user/login");

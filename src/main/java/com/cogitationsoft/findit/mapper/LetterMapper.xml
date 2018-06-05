@@ -20,4 +20,28 @@
 			</if>
 		</where>
 	</select>
+
+	<select id="listGetLetterDO" resultType="LetterDO" parameterType="String" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT
+		t_letter.*
+		FROM
+		t_letter
+		LEFT JOIN `t_user_letter` ON t_letter.letter_id = t_user_letter.letter_id LEFT JOIN t_user ON t_user.user_id = t_user_letter.user_id
+		WHERE
+		t_user_letter.user_id = #{id} AND t_user.nickname = t_letter.to_name
+	</select>
+
+	<select id="listSentLetterDO" resultType="LetterDO" parameterType="String" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT
+		t_letter.*
+		FROM
+		t_letter
+		LEFT JOIN `t_user_letter` ON t_letter.letter_id = t_user_letter.letter_id
+		WHERE
+		user_id = #{userId}
+	</select>
 </mapper>

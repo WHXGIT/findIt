@@ -13,11 +13,11 @@
 					<li><a class="header-nav-but" href="/lost">我丢失了</a></li>
 					<li><a class="header-nav-but" href="/find">我捡到了</a></li>
 					<#--<li><a class="header-nav-but" onclick="searchCred();">信息检索</a></li>-->
-					<li><a class="header-nav-but" href="/search" ">信息检索</a></li>
+					<li><a class="header-nav-but" href="/search/Init/null" ">信息检索</a></li>
 					<li><a class="header-nav-but" href="/letter">感谢信</a></li>
 					<li><a class="header-nav-but" href="/write_letter">写感谢信</a></li>
-					<li><a class="header-nav-but" href="#">宣传墙</a></li>
-					<li><a class="header-nav-but" href="#">责任声明</a></li>
+					<li><a class="header-nav-but" href="/propaganda">宣传墙</a></li>
+					<li><a class="header-nav-but" href="/disclaimer">责任声明</a></li>
 					<li><a class="header-nav-but" href="/readMe">我的中心</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->

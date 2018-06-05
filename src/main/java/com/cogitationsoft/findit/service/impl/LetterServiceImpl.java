@@ -5,6 +5,7 @@ import com.cogitationsoft.findit.mapper.LetterMapper;
 import com.cogitationsoft.findit.pojo.LetterDO;
 import com.cogitationsoft.findit.pojo.UserLetterDO;
 import com.cogitationsoft.findit.service.LetterService;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,7 +44,29 @@ public class LetterServiceImpl implements LetterService{
 
 	@Override
 	public Pagination<LetterDO> listLetterDO(Pagination<LetterDO> page) {
+		PageHelper.startPage(page.getCurrentPage(), page.getPageCount());
 		List<LetterDO> list = letterMapper.listLetterDO((LetterDO)page.getData().get(0));
+		page.setData(list);
+		PageInfo pagelist = new PageInfo(list);
+		page.setCurrentPage(pagelist.getPageNum());
+		page.setTotalCount(Integer.valueOf(String.valueOf(pagelist.getTotal())));
+		page.setTotalPage(pagelist.getPages());
+		return page;
+	}
+
+	@Override
+	public Pagination<LetterDO> listSelfLetterDO(Pagination<LetterDO> page, String userId, String type) {
+		PageHelper.startPage(page.getCurrentPage(), page.getPageCount());
+		List<LetterDO> list = null;
+		try {
+			if("get".equals(type)) {
+				list = letterMapper.listGetLetterDO(userId);
+			}else {
+				list = letterMapper.listSentLetterDO(userId);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		page.setData(list);
 		PageInfo pagelist = new PageInfo(list);
 		page.setCurrentPage(pagelist.getPageNum());

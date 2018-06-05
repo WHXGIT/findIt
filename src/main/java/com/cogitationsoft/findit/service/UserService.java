@@ -1,5 +1,6 @@
 package com.cogitationsoft.findit.service;
 
+import com.cogitationsoft.findit.common.Pagination;
 import com.cogitationsoft.findit.pojo.UserCenterVO;
 import com.cogitationsoft.findit.pojo.UserDO;
 import com.cogitationsoft.findit.pojo.UserVO;
@@ -37,4 +38,8 @@ public interface UserService {
 
 	/** @description： 获取用户中心需要显示的数据*/
 	UserCenterVO getUserCenterVO(String id);
+
+	Pagination<UserDO> listUser(Pagination<UserDO> pagination);
+
+	boolean forbidUser(String userId);
 }

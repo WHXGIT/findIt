@@ -27,9 +27,10 @@
 			</div>
 			<div class="row form-group">
 				<input style="width: 201px;" required="required" type="text" class="col-md-8 form-control" placeholder="验证码" name="code">
-				<i><img onclick="changeCode();" style="height:33px;" id="codeImg" alt="点击更换" title="点击更换" src="/captcha-image"/></i>
+				<i><img style="height:33px;" id="kaptchaImage" alt="点击更换" title="点击更换" src="/captcha-image"/></i>
+				<a style="font-size: 13px;" href="javascript:chageCode()"><span style="display: inline-block;float: right;">看不清？换一张</span></a>
 			</div>
-			<input type="submit" class="login-button" value="登录">
+			<input type="submit" class="login-button" value="登录" style="color: white;">
 		</form>
         </div>
 	</div>

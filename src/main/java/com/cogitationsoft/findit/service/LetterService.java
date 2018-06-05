@@ -15,4 +15,7 @@ public interface LetterService {
 
 	/** @description： 分页查询、条件查询 证件列表*/
 	Pagination<LetterDO> listLetterDO(Pagination<LetterDO> page);
+
+	/** @description： 查询与自己相关的信息*/
+	Pagination<LetterDO> listSelfLetterDO(Pagination<LetterDO> page, String user_id,String type);
 }

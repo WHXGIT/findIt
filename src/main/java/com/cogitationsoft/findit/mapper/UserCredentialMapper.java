@@ -14,4 +14,7 @@ import java.sql.SQLException;
 public interface UserCredentialMapper {
 	/** @description： 插入信息*/
 	void insert(UserCredentialDO userCredentialDO) throws SQLException;
+
+	/** @description： 根据证件id获取一个用户证件关系实体*/
+	UserCredentialDO getUserCredentialDO(String credId) throws SQLException;
 }

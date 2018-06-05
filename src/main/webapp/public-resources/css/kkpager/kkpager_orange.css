@@ -6,12 +6,13 @@
 	width:  100%;
 	/* padding-left: 256px; */
 	/* margin-left: 166px; */
+	padding: 50px 20px;
 }
 #kkpager a{
 	float: left;
 	border: 1px solid #ccc;
 	display: inline;
-	padding: 3px 10px 3px 10px;
+	padding: 10px 20px;
 	margin-right: 5px;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -25,7 +26,7 @@
 #kkpager span.disabled{
 	float: left;
 	display: inline;
-	padding: 3px 10px 3px 10px;
+	padding: 10px 20px;
 	margin-right: 5px;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -33,22 +34,23 @@
 	border:1px solid #DFDFDF;
 	background-color:#FFF;
 	color:#DFDFDF;
+	font-size: 14px;
 }
 #kkpager span.curr{
 	float: left;
-	border: 1px solid #FF6600;
+	border: 1px solid #01C2AF;
 	display: inline;
-	padding: 3px 10px 3px 10px;
+	padding: 10px 20px;
 	margin-right: 5px;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
-	background: #FFEEE5;
-	color: #FF6600;
+	/* background: #FFEEE5; */
+	color: #01C2AF;
 }
 #kkpager a:hover{
-	border:1px solid #FF6600; 
-	background-color:#FF6600; 
+	border:1px solid #01C2AF;
+	background-color:#01C2AF;
 	color:#fff;
 }
 #kkpager span.normalsize{
@@ -59,27 +61,27 @@
 	top:0px;
 }
 #kkpager_btn_go {
-	width:44px;
-	height:18px;
+	width: 75px;
+	height: 36px;
 	border:0px;
 	overflow:hidden;
 	line-height:140%;
-	padding:0px;
+	/* padding: 10px 20px; */
 	margin:0px;
 	text-align:center;
 	cursor:pointer;
-	background-color:#FF6600;
+	background-color: #01C2AF;
 	color:#FFF;
 	position:absolute;
 	left:0px;
-	top:-2px;
+	top: -9px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	display:none;
 }
 #kkpager_btn_go_input{
 	width:36px;
-	height:14px;
+	height: 31px;
 	color:#999;
 	text-align:center;
 	margin-left:1px;
@@ -94,7 +96,7 @@
 }
 
 #kkpager_btn_go_input.focus{
-	border-color:#FF6600;
+	border-color: #01C2AF;
 }
 
 #kkpager .pageBtnWrap{
@@ -109,9 +111,12 @@
 }
 
 #kkpager .currPageNum{
-	color:#FD7F4D;
+	color: #01C2AF;
 }
 
 #kkpager .infoTextAndGoPageBtnWrap{
-	padding-top:5px;
+	/* padding-top:5px; */
+	padding: 5px 20px;
+	font-size: 16px;
+	margin-right: 20px;
 }

@@ -19,4 +19,8 @@ public interface LetterMapper {
 	/** @description： 分页查询、 信件列表*/
 	List<LetterDO> listLetterDO(LetterDO letterDO);
 
+	List<LetterDO> listGetLetterDO(String id) throws SQLException;
+
+	List<LetterDO> listSentLetterDO(String id) throws SQLException;
+
 }

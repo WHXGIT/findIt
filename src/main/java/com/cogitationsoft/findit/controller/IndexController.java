@@ -7,8 +7,10 @@ import org.apache.logging.log4j.core.util.UuidUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -36,6 +38,7 @@ public class IndexController {
 
 	@Autowired
 	private DefaultKaptcha captchaProducer;
+
 	/**
 	 * Method Description:
 	 * 〈负责跳转到首页〉
@@ -112,18 +115,23 @@ public class IndexController {
 		return "credential/find";
 	}
 
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String search(HttpServletResponse response) {
+	@RequestMapping(value = "/search/{exType}/{type}", method = RequestMethod.GET)
+	public ModelAndView search(@PathVariable("exType") String exType,
+	                           @PathVariable("type") String type,
+	                           HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
-		return "credential/search";
-	}
-
-	@RequestMapping(value = "/searchSelf", method = RequestMethod.GET)
-	public String searchSelf(HttpServletResponse response) {
-		response.setContentType("text/html;charset=UTF-8");
-		response.setCharacterEncoding("utf-8");
-		return "credential/search_self";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("exType", exType);
+		mav.addObject("type", type);
+		if ("Init".equals(exType)) {
+			mav.setViewName("credential/search");
+		} else if ("UnInitComment".equals(exType)) {
+			mav.setViewName("credential/search_self_comment");
+		} else {
+			mav.setViewName("credential/search_self");
+		}
+		return mav;
 	}
 
 	@RequestMapping(value = "/letter", method = RequestMethod.GET)
@@ -172,10 +180,10 @@ public class IndexController {
 	 * Method Description:
 	 * 〈生成验证码〉
 	 *
-	 * @param:      null
+	 * @param: null
 	 * @return:
-	 * @author:     Andy
-	 * @date:       5/23/2018 5:01 PM
+	 * @author: Andy
+	 * @date: 5/23/2018 5:01 PM
 	 */
 	@RequestMapping(value = "/captcha-image")
 	public ModelAndView getKaptchaImage(HttpServletRequest request,
@@ -188,11 +196,12 @@ public class IndexController {
 		response.setHeader("Pragma", "no-cache");
 		response.setContentType("image/jpeg");
 
+		ModelAndView mav = new ModelAndView();
 		String capText = captchaProducer.createText();
 		session.setAttribute("code", capText);
 		try {
-			String uuid= UuidUtil.getTimeBasedUuid().toString();
-			Cookie cookie = new Cookie("captchaCode",uuid);
+			String uuid = UuidUtil.getTimeBasedUuid().toString();
+			Cookie cookie = new Cookie("captchaCode", uuid);
 			response.addCookie(cookie);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -206,7 +215,46 @@ public class IndexController {
 		} finally {
 			out.close();
 		}
+
 		return null;
 	}
 
+
+	@RequestMapping(value = "/getLetter", method = RequestMethod.GET)
+	public String getLetter(HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		return "letter/letter_get";
+	}
+
+	@RequestMapping(value = "/sendLetter", method = RequestMethod.GET)
+	public String sentLetter(HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		return "letter/letter_send";
+	}
+
+	@RequestMapping(value = "/disclaimer", method = RequestMethod.GET)
+	public String disclaimer(HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		return "disclaimer";
+	}
+
+	@RequestMapping(value = "/propaganda", method = RequestMethod.GET)
+	public String propaganda(HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		return "propaganda";
+	}
+
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String admin(HttpServletResponse response, HttpSession session) {
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		if (session.getAttribute("userVO") == null) {
+			return "user/login";
+		}
+		return "admin/index";
+	}
 }

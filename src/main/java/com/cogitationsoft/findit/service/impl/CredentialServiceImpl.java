@@ -58,6 +58,7 @@ public class CredentialServiceImpl implements CredentialService{
 	@Override
 	public void insertRelation(UserCredentialDO userCredentialDO){
 		try {
+			userCredentialDO.setState(0);
 			userCredentialMapper.insert(userCredentialDO);
 		} catch (SQLException e) {
 			logger.error(e.getMessage());
@@ -118,5 +119,65 @@ public class CredentialServiceImpl implements CredentialService{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public UserCredentialDO getUserCredentialDO(String credId) {
+		UserCredentialDO userCredentialDO = null;
+		try {
+			userCredentialDO = userCredentialMapper.getUserCredentialDO(credId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return userCredentialDO;
+	}
+
+	@Override
+	public Pagination<CredentialDO> listSelfCommentCredentialDO(Pagination<CredentialDO> page,String userId) {
+		PageHelper.startPage(page.getCurrentPage(), page.getPageCount());
+		List<CredentialDO> list = null;
+		try {
+			list = credentialMapper.listSelfCommentCredentialDO(userId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		page.setData(list);
+		PageInfo pagelist = new PageInfo(list);
+		page.setCurrentPage(pagelist.getPageNum());
+		page.setTotalCount(Integer.valueOf(String.valueOf(pagelist.getTotal())));
+		page.setTotalPage(pagelist.getPages());
+		return page;
+	}
+
+	@Override
+	public Pagination<CredentialDO> listReviewCredentialDO(Pagination<CredentialDO> page) {
+		PageHelper.startPage(page.getCurrentPage(), page.getPageCount());
+		List<CredentialDO> list = null;
+		try {
+			list = credentialMapper.listReviewCredentialDO(null);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		page.setData(list);
+		PageInfo pagelist = new PageInfo(list);
+		page.setCurrentPage(pagelist.getPageNum());
+		page.setTotalCount(Integer.valueOf(String.valueOf(pagelist.getTotal())));
+		page.setTotalPage(pagelist.getPages());
+		return page;
+	}
+
+	@Transactional(rollbackFor = RuntimeException.class)
+	@Override
+	public boolean check(String state, String credId){
+		Map<String, String> map = new HashMap<>();
+		map.put("state", state);
+		map.put("credId", credId);
+		try {
+			credentialMapper.check(map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+		return true;
 	}
 }

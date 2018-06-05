@@ -21,4 +21,10 @@ public interface CommentMapper {
 
 	/** @description： 获取评论列表*/
 	List<CommentDO> listComment(CommentDO commentDO) throws SQLException;
+
+	/** @description： 终止一个证件发布*/
+	Integer shutdownCred(String credId, String userId) throws SQLException;
+
+	/** @description： 更改证件属性为已寻找*/
+	void updateCredType(String credId) throws SQLException;
 }

@@ -7,7 +7,9 @@ import com.cogitationsoft.findit.pojo.UserCredentialDO;
 import com.cogitationsoft.findit.pojo.UserDO;
 import com.cogitationsoft.findit.pojo.UserVO;
 import com.cogitationsoft.findit.service.CredentialService;
+import com.cogitationsoft.findit.util.CutName;
 import com.cogitationsoft.findit.util.DoCodeUtil;
+import com.cogitationsoft.findit.util.MarkImageUtils;
 import com.cogitationsoft.findit.util.OCRUtil;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +94,9 @@ public class CredentialController {
 		response.setCharacterEncoding("utf-8");
 		Pagination<CredentialDO> pagination = null;
 		if (((CredentialDO) page.getData().get(0)).getCredType() != null) {
+			if ("2".equals(((CredentialDO) page.getData().get(0)).getCredType())) {
+				((CredentialDO) page.getData().get(0)).setCredType(null);
+			}
 			pagination = credentialService.listSelfCredentialDO(page,
 					((UserVO) session.getAttribute("userVO")).getUserId());
 		} else {
@@ -99,6 +104,31 @@ public class CredentialController {
 		}
 		mav.addObject(pagination);
 		List list = new ArrayList();
+		mav.setViewName("credential/search");
+		return mav;
+	}
+
+
+	/**
+	 * Method Description:
+	 * 〈分页展示参与过评论的〉
+	 *
+	 * @param: null
+	 * @return:
+	 * @author: Andy
+	 * @date: 5/17/2018 2:37 PM
+	 */
+	@RequestMapping(value = "/searchComment", method = RequestMethod.POST)
+	public ModelAndView listCredentialComment(@RequestBody Pagination<CredentialDO> page,
+	                                          @RequestParam(value = "exType", required = false) String exType,
+	                                          HttpServletResponse response, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		Pagination<CredentialDO> pagination = null;
+		pagination = credentialService.listSelfCommentCredentialDO(page,
+				((UserVO) session.getAttribute("userVO")).getUserId());
+		mav.addObject(pagination);
 		mav.setViewName("credential/search");
 		return mav;
 	}
@@ -161,6 +191,13 @@ public class CredentialController {
 					credentialDO.setCredType("0");
 					credentialDO.setPhotoPath(cerdPath);
 					credentialDO.setMicroReward(Integer.valueOf(microReward));
+					MarkImageUtils.markImg(rootPathDir.getAbsolutePath()
+									+ File.separator + filename,rootPathDir.getAbsolutePath()
+									+ File.separator+"mark.png",
+							rootPathDir.getAbsolutePath()
+									+ File.separator,
+							CutName.getDoltResult(filename).get("name"),
+							CutName.getDoltResult(filename).get("type"), null);
 					credentialService.insert(credentialDO);
 					String credId = credentialDO.getCredId();
 					UserCredentialDO userCredentialDO = new UserCredentialDO();

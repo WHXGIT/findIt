@@ -2,9 +2,11 @@ package com.cogitationsoft.findit.mapper;
 
 import com.cogitationsoft.findit.pojo.UserDO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.jdbc.SQL;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author: Andy
@@ -48,4 +50,8 @@ public interface UserMapper {
 	Integer getAllCommentCred(String id) throws SQLException;
 
 	Integer getAllMocriReward(String id) throws SQLException;
+
+	List<UserDO> listUser(UserDO userDO) throws SQLException;
+
+	void forbidUser(String userId) throws SQLException;
 }

@@ -1,9 +1,6 @@
 package com.cogitationsoft.findit.controller;
 
-import com.cogitationsoft.findit.pojo.CommentDO;
-import com.cogitationsoft.findit.pojo.CredDetailVO;
-import com.cogitationsoft.findit.pojo.CredentialDO;
-import com.cogitationsoft.findit.pojo.UserVO;
+import com.cogitationsoft.findit.pojo.*;
 import com.cogitationsoft.findit.service.CommentService;
 import com.cogitationsoft.findit.service.CredentialService;
 import com.cogitationsoft.findit.util.DoCodeUtil;
@@ -70,9 +67,27 @@ public class CommentController {
 		CommentDO commentDO = new CommentDO();
 		commentDO.setToUserId(id);
 		List<CommentDO> commentDOList = commentService.listComment(commentDO);
+		UserCredentialDO userCredentialDO = credentialService.getUserCredentialDO(credentialDO.getCredId());
 		mav.addObject("credentialDO", credentialDO);
 		mav.addObject("commentDOList", commentDOList);
+		mav.addObject("userCredentialDO",userCredentialDO);
 		mav.setViewName("comment/comment");
+		return mav;
+	}
+
+	@RequestMapping(value = "/shutdown", method = RequestMethod.POST)
+	public ModelAndView shutdownPublish(@RequestParam("id")String id, HttpServletResponse response,
+	                                    HttpSession session){
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		ModelAndView mav = new ModelAndView();
+		boolean result = commentService.shutdownCred(id,
+				((UserVO)session.getAttribute("userVO")).getUserId());
+		if(result){
+			mav.setViewName("redirect:/search/unInit/2");
+		}else {
+			mav.setViewName("redirect:/");
+		}
 		return mav;
 	}
 }

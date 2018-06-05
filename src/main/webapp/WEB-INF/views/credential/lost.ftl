@@ -42,7 +42,7 @@
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">微报酬：</span>
-		<input required="required" name="microReward" type="text" class="form-control main-lost-input" placeholder="微报酬" aria-describedby="basic-addon1">
+		<input required="required" name="microReward" type="number" class="form-control main-lost-input" placeholder="微报酬" aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">描述：</span>

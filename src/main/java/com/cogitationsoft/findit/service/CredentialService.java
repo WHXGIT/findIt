@@ -31,4 +31,12 @@ public interface CredentialService {
 
 	/** @description： 添加身份证图片*/
 	void insertByImg(CredentialDO credentialDO);
+
+	UserCredentialDO getUserCredentialDO(String credId);
+
+	Pagination<CredentialDO> listSelfCommentCredentialDO(Pagination<CredentialDO> page,String userId);
+
+	Pagination<CredentialDO> listReviewCredentialDO(Pagination<CredentialDO> page);
+
+	boolean check(String state, String credId);
 }

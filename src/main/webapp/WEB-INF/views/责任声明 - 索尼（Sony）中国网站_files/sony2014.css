@@ -1,0 +1,38 @@
+﻿/*world*/
+.node_border{border-top:1px solid #f8f8f8;}
+#subTitle                               {height: 90px; width: 100%; background: url(/aboutsony/images/subTitleBg.gif) center center repeat-y;}
+#subTitle h2            {margin-top: 44px; margin-left: 13px; float: left;}
+#subTitle .backLink             {margin-top: 36px; float: right; margin-right: 5px;background: url(/aboutsony/images/sonyworld.png) 0 0 no-repeat;width:130px;height:40px;}
+#subTitle .backLink:hover{background: url(/aboutsony/images/sonyworld.png) 0 -40px no-repeat;width:130px;height:40px;}
+#main-content .gray-pod{border:1px solid #E6E6E6;padding:6px 6px 0 6px;} 
+#main-content .column-3{margin:0;}
+#main-content .column-3-A, #main-content .column-3-B, #main-content .column-3-C{margin:0 0 6px 0;padding:12px;width:280px;height:191px;border:1px solid #E6E6E6;}
+#main-content .column-3-A, #main-content .column-3-C{width:430px;}
+#main-content .column-3-A, #main-content .column-3-B{margin:0 6px 0 0;}
+#main-content .column-3-A h2, #main-content .column-3-B h2, #main-content .column-3-C h2{margin:0;padding:0;background:none;border:none;}
+#main-content .column-3 p{margin:12px 0 0 0;color:#666;}
+#main-content .column-3-C a.std-btn{margin:6px 0 12px 0;}
+#main-content .column-3 ul{margin:12px 0 0 0;padding:0;list-style:none;color:#666;}
+#main-content .column-3 .column-3-A ul li{float:left;width:274px;padding:0 0 3px 10px;}
+#main-content .gray-pod .pod-content{margin:0 0 6px 0;padding:18px;border:1px solid #E6E6E6;}
+#main-content .gray-pod .pod-content h2{margin:0 0 12px 0;}
+br.clear, div.clear{clear:both;font: 1px/1px monospace;display: block;}
+.clear                { clear:both; font-size:1px; width:1px; height:0; visibility:hidden; }
+.column-3-A, .column-3-B, .column-3-C {
+  float: left;
+  position:relative;
+}
+.column-3-C, .column-2 .column-2-A, .column-2 .column-2-B, #main-content .gray-pod {
+  background-color: #F3F3F3;
+}
+body, .ListEntry, .sitemap-content, #main-content .column-3-A, #main-content .column-3-B, #main-content .column-3-C, #main-content .gray-pod .pod-content {
+  background-color: #FFFFFF;
+}
+
+div.split-line {
+clear: both;
+border-bottom: 1px solid #E6E6E6;
+font: 1px/1px monospace;
+margin: 0 0 6px 0;
+padding: 6px 0 0 0;
+}

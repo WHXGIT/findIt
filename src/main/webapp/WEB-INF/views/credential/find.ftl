@@ -13,7 +13,7 @@
 <body>
 <#include "../header.ftl">
 <div class="main main-lost-title">
-	<span><a onclick="changeMode(0);">身份证</a></span><span> / </span><span><a onclick="changeMode(1);">其他证件信息</a></span>
+	<span><a onclick="changeMode(0);">身份证</a></span><span> | </span><span><a onclick="changeMode(1);">其他证件信息</a></span>
     <hr>
 </div>
 
@@ -44,7 +44,7 @@
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">微报酬：</span>
-		<input required="required" name="microReward" type="text" class="form-control main-lost-input" placeholder="微报酬" aria-describedby="basic-addon1">
+		<input required="required" name="microReward" type="number" class="form-control main-lost-input" placeholder="微报酬" aria-describedby="basic-addon1">
 	</div>
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">描述：</span>
@@ -56,16 +56,15 @@
 </form>
 
 <form class="main-identify" method="post" action="/credential/upload" enctype="multipart/form-data">
-    <div>
+    <div style="margin-left: 65px">
         <span>请确保您上传的照片是 <b>身份证</b>，否则请选择 <b>其他证件信息</b></span>
+	    <a href="javascript:;" class="a-upload"><input type="file" name="img">点击请选择上传文件</a>
     </div>
-    <input type="file" name="img">
-
 	<div class="input-group main-lost-group">
 		<span class="input-group-addon main-lost-name" id="basic-addon1">微报酬：</span>
 		<input required="required" name="microReward" type="text" class="form-control main-lost-input" placeholder="微报酬" aria-describedby="basic-addon1">
 	</div>
-	<input type="submit" value="提交">
+	<input type="submit" value="提交" class="main-lost-button">
 </form>
 
 <#include "../footer.ftl">

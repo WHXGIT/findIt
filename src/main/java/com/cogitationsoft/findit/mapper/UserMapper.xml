@@ -11,9 +11,9 @@
 	</resultMap>-->
 	<insert id="create" parameterType="UserDO" flushCache="true" statementType="PREPARED">
 		INSERT INTO t_user
-		( user_id, username, password, nickname, phone, head_img )
+		( user_id, username, password, nickname, phone, head_img,register_time)
 		VALUES
-		(UUID(),#{username},#{password},#{nickname},#{phone}, #{headImg})
+		(UUID(),#{username},#{password},#{nickname},#{phone}, #{headImg},#{registerTime})
 	</insert>
 
 	<update id="update" parameterType="UserDO" flushCache="true" statementType="PREPARED" timeout="20">
@@ -145,4 +145,17 @@ HAVING
 	WHERE
 	user_id = #{id} AND cred_type = '1'
 	</select>
+
+	<select id="listUser" resultType="UserDO" parameterType="UserDO" flushCache="false" useCache="true">
+		SELECT * FROM t_user
+		<where>
+			<if test='state != null and state != ""'>
+				state = #{state}
+			</if>
+		</where>
+	</select>
+
+	<update id="forbidUser" parameterType="String" flushCache="true" statementType="PREPARED" timeout="20">
+	UPDATE t_user SET state = '2' WHERE user_id = #{userId}
+</update>
 </mapper>

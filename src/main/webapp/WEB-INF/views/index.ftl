@@ -58,7 +58,7 @@
 
 	<div class="row">
 		<div class="panel panel-default col-md-7 main-activity-card">
-			<div class="panel-heading">
+			<div class="panel-heading" style="border-left: 1px solid #dddddd">
 				<h3 class="panel-title"><b>动态</b></h3>
 			</div>
 			<div class="panel-body">

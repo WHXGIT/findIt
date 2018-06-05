@@ -19,7 +19,7 @@
 		<input id="searchCredName" type="text" class="form-control search-input" placeholder="证件名">
 		<input id="searchCredHoldName" type="text" class="form-control search-input" placeholder="证件持有人姓名">
 		<span class="input-group-btn">
-        <button class="btn btn-default" onclick="clickSearchCred();">搜索</button>
+        <button class="btn btn-default" onclick="searchCred(9, 1);">搜索</button>
       </span>
 	</div>
 </div>

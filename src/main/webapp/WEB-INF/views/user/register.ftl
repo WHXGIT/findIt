@@ -14,6 +14,7 @@
 <#include "../header.ftl">
 <div class="container">
 	<h3>欢迎注册</h3>
+	<span class="login-error-message">${errorMessage!""}</span>
 	<form action="/user/reg" method="post">
 		<div class="form-group">
 			<label for="exampleInputEmail1">昵称</label>
@@ -62,10 +63,10 @@
 			<strong></strong>
 		</div>
 		<div class="form-group" id="yanzheng">
-			<label for="exampleInputEmail1">验证码</label>
-			<input type="text" class="form-control" placeholder="请输入验证码" id="shuru">
-			<div id="huoqu">获取验证码</div>
-
+			<label for="exampleInputEmail1">验证码</label><br>
+			<input style="display: inline-block;" type="text" name="code" class="form-control" placeholder="请输入验证码" id="shuru">
+			<img style="height:33px;" id="kaptchaImage" alt="点击更换" title="点击更换" src="/captcha-image"/>
+			<a style="font-size: 13px;" href="javascript:chageCode()">看不清？换一张</a>
 		</div>
 
 		<button id=registerBtn>注册</button>

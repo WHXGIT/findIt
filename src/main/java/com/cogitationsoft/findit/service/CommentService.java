@@ -17,4 +17,8 @@ public interface CommentService {
 
 	/** @description： 获取评论列表*/
 	List<CommentDO> listComment(CommentDO commentDO);
+
+	/** @description： 终止一个已发布的证件*/
+	boolean shutdownCred(String credId, String userId);
+
 }

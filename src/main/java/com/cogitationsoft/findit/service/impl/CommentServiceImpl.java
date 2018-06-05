@@ -30,10 +30,10 @@ public class CommentServiceImpl implements CommentService {
 	 * Method Description:
 	 * 〈对数据进行处理， 添加一些默认信息〉
 	 *
-	 * @param:      评论数据对象
+	 * @param: 评论数据对象
 	 * @return:
-	 * @author:     Andy
-	 * @date:       5/22/2018 8:32 PM
+	 * @author: Andy
+	 * @date: 5/22/2018 8:32 PM
 	 */
 	@Transactional(rollbackFor = RuntimeException.class)
 	@Override
@@ -51,10 +51,10 @@ public class CommentServiceImpl implements CommentService {
 	 * Method Description:
 	 * 〈获取评论的列表信息〉
 	 *
-	 * @param:      null
+	 * @param: null
 	 * @return:
-	 * @author:     Andy
-	 * @date:       5/23/2018 10:44 AM
+	 * @author: Andy
+	 * @date: 5/23/2018 10:44 AM
 	 */
 	@Override
 	public List<CommentDO> listComment(CommentDO commentDO) {
@@ -65,5 +65,19 @@ public class CommentServiceImpl implements CommentService {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Transactional(rollbackFor = RuntimeException.class)
+	@Override
+	public boolean shutdownCred(String credId, String userId) {
+		boolean result = false;
+		try {
+			commentMapper.updateCredType(credId);
+			result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+		return result;
 	}
 }

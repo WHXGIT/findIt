@@ -1,5 +1,6 @@
 package com.cogitationsoft.findit.service.impl;
 
+import com.cogitationsoft.findit.common.Pagination;
 import com.cogitationsoft.findit.common.exception.UserDTOException;
 import com.cogitationsoft.findit.mapper.UserMapper;
 import com.cogitationsoft.findit.pojo.UserCenterVO;
@@ -8,6 +9,8 @@ import com.cogitationsoft.findit.pojo.UserDTO;
 import com.cogitationsoft.findit.pojo.UserVO;
 import com.cogitationsoft.findit.service.UserService;
 import com.cogitationsoft.findit.util.GenerateBASE64MD5Util;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import java.sql.SQLException;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author: Andy
@@ -38,6 +42,7 @@ public class UserServiceImpl implements UserService {
 			try {
 				String password = GenerateBASE64MD5Util.toDigest(userDO.getPassword());
 				userDO.setPassword(password);
+				userDO.setRegisterTime(LocalDateTime.now());
 				mapper.create(userDO);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -152,6 +157,41 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 		}
 		return vo;
+	}
+
+	@Transactional
+	@Override
+	public Pagination<UserDO> listUser(Pagination<UserDO> pagination) {
+		try {
+			PageHelper.startPage(pagination.getCurrentPage(), pagination.getPageCount());
+			List<UserDO> list = null;
+			if((UserDO) pagination.getData() != null) {
+				UserDO userDO = (UserDO) pagination.getData().get(0);
+				list = mapper.listUser((UserDO) pagination.getData().get(0));
+			}else {
+				list = mapper.listUser(null);
+			}
+			PageInfo pagelist = new PageInfo(list);
+			pagination.setData(list);
+			pagination.setCurrentPage(pagelist.getPageNum());
+			pagination.setTotalCount(Integer.valueOf(String.valueOf(pagelist.getTotal())));
+			pagination.setTotalPage(pagelist.getPages());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pagination;
+	}
+
+	@Transactional(rollbackFor = RuntimeException.class)
+	@Override
+	public boolean forbidUser(String userId) {
+		try {
+			mapper.forbidUser(userId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+		return true;
 	}
 
 }

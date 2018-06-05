@@ -65,7 +65,7 @@ public class LetterController {
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public ModelAndView listCredential(@RequestBody Pagination<LetterDO> page,
+	public ModelAndView listLetter(@RequestBody Pagination<LetterDO> page,
 	                                   HttpServletResponse response){
 		ModelAndView mav = new ModelAndView();
 		response.setContentType("text/html;charset=UTF-8");
@@ -76,4 +76,41 @@ public class LetterController {
 		return mav;
 	}
 
+	@RequestMapping(value = "/getSearch", method = RequestMethod.POST)
+	public ModelAndView listGetLetter(@RequestBody Pagination<LetterDO> page,
+	                                   HttpServletResponse response,
+	                                  HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		String userId = null;
+		if(session != null){
+			userId = ((UserVO)(session.getAttribute("userVO"))).getUserId();
+		}
+
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		Pagination<LetterDO> pagination = letterService.listSelfLetterDO(page, userId, "get");
+		mav.addObject(pagination);
+		mav.setViewName("letter/letter");
+		return mav;
+	}
+
+
+	@RequestMapping(value = "/sendSearch", method = RequestMethod.POST)
+	public ModelAndView listSentLetter(@RequestBody Pagination<LetterDO> page,
+	                                  HttpServletResponse response,
+	                                  HttpSession session){
+		ModelAndView mav = new ModelAndView();
+
+		String userId = null;
+		if(session != null){
+			userId = ((UserVO)(session.getAttribute("userVO"))).getUserId();
+		}
+
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+		Pagination<LetterDO> pagination = letterService.listSelfLetterDO(page, userId, "sent");
+		mav.addObject(pagination);
+		mav.setViewName("letter/letter");
+		return mav;
+	}
 }

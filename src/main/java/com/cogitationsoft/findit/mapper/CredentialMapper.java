@@ -1,6 +1,7 @@
 package com.cogitationsoft.findit.mapper;
 
 import com.cogitationsoft.findit.pojo.CredentialDO;
+import org.apache.ibatis.jdbc.SQL;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -32,4 +33,11 @@ public interface CredentialMapper {
 
 	/** @description： 获取我相关的证件信息*/
 	List<CredentialDO> listSelfCredentialDO(Map<String, Object> map) throws SQLException;
+
+	/** @description： 我评论过的证件信息*/
+	List<CredentialDO> listSelfCommentCredentialDO(String userId) throws SQLException;
+
+	List<CredentialDO> listReviewCredentialDO(CredentialDO credentialDO) throws SQLException;
+
+	void check(Map<String, String> map) throws SQLException;
 }

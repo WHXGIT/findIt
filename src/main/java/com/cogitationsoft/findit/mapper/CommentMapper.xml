@@ -30,6 +30,16 @@
 
 		</where>
 	</select>
+
+	<select id="shutdownCred" resultType="Integer" flushCache="false"
+	        useCache="true"
+	        timeout="10" fetchSize="256" statementType="PREPARED" resultSetType="FORWARD_ONLY">
+		SELECT count(user_id) FROM t_user_credential WHERE user_id = #{0} AND cred_id = #{1}
+	</select>
+
+	<update id="updateCredType" parameterType="String" flushCache="true" statementType="PREPARED" timeout="20">
+		UPDATE t_credential SET cred_type = '1' WHERE cred_id = #{credId}
+	</update>
 	<!--
 		<select id="listCredentialDO" resultType="CredentialDO" parameterType="CredentialDO" flushCache="false"
 				useCache="true"
