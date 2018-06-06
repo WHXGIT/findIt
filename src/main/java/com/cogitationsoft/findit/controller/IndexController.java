@@ -252,7 +252,7 @@ public class IndexController {
 	public String admin(HttpServletResponse response, HttpSession session) {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
-		if (session.getAttribute("userVO") == null) {
+		if (session.getAttribute("userAdmin") == null) {
 			return "user/login";
 		}
 		return "admin/index";

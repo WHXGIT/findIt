@@ -1,5 +1,5 @@
 body {
-	/* background-color: #F0F2F5; */
+	background-color: #F0F2F5;
 }
 
 a:hover {
@@ -551,16 +551,11 @@ margin: auto;
 }
 
 .search-detail-card {
-
-/* width: 336px; */
-
-/* height: 402px; */
-
-background-color: #F0F2F5;
-
-/* margin-left: 30%; */
-
-overflow: hidden;
+width: 675px;
+/* height: 402px; */
+background-color: #F0F2F5;
+/* margin-left: 30%; */
+overflow: hidden;
 }
 
 .search-detail-card li {

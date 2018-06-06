@@ -109,35 +109,22 @@
 }
 
 .function-card {
-
-background: #F2F2F2;
-
-width: 262px;
-
-height: 158px;
-
-border-radius: 6px;
-
-margin-left: 40px;
-
-margin-right: 60px;
-
-margin-bottom: 37px;
-
-float: left;
+background: #ffffff;
+width: 262px;
+height: 158px;
+border-radius: 6px;
+margin-left: 40px;
+margin-right: 60px;
+margin-bottom: 37px;
+float: left;
 }
 
 .function-list{
-
-background-color: #F0F0F0;
-
-width: 1000px;
-
-margin-left: 40px;
-
-height: 472px;
-
-border-radius: 4px;
+background-color: #ffffff;
+width: 1000px;
+margin-left: 40px;
+height: 472px;
+border-radius: 4px;
 }
 
 .function-hr{
@@ -149,7 +136,9 @@ border-radius: 4px;
 }
 
 .admin-footer{
+	position:  relative;
 	display:  block;
+	top: 68px;
 	color: white !important;
 	width: 100% !important;
 	border-radius: 0 !important;

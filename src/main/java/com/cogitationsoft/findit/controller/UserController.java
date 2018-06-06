@@ -102,6 +102,7 @@ public class UserController {
 			mav.addObject("userVO", user);
 			if (user != null) {
 				if(user.getAuthority().getValue() == 2){
+					session.setAttribute("userAdmin", user);
 					mav.setViewName("admin/index");
 				}else {
 					if (user.getState().getValue() == 1) {
